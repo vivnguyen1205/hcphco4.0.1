@@ -25,9 +25,13 @@ export class HomepageformComponent implements OnInit {
     @ViewChild('dt') dt: Table;
     constructor(private apiService: ApiService) {}
     hospitalId: number;
+    CSFId: any;
+    CSFIdEncrypt: any;
+    CSFIdLink: any;
     doctorId: number;
     rangeDates: Date[] | undefined;
     comboId: number;
+
     date1: Date | undefined;
 
     date2: Date | undefined;
@@ -59,7 +63,7 @@ export class HomepageformComponent implements OnInit {
         // this.getDoctor();
         // this.getCombo();
     }
-
+    
     getHospital() {
         this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
             this.HospitalList = data.Data;
@@ -80,10 +84,15 @@ export class HomepageformComponent implements OnInit {
         this.apiService.getData(doctorApi).subscribe((data: any) => {
             this.DoctorList = data.Data;
             this.hospitalId = hospitalId?.target?.value;
+          
             // console.log(this.DoctorList);
         });
-    }
-
+      }
+    
+    
+   
+      
+    
     onChangeDoctor(doctorId: any) { // retrieves the doctor ID 
       this.doctorId = doctorId?.target?.value;
     }
@@ -166,4 +175,31 @@ export class HomepageformComponent implements OnInit {
 
         
     }
+ 
+// onChangeHospital(hospitalId: any) { // gets the doctor list changes on hospital change 
+// const doctorApi = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryDoctor?hospitalId=' +
+// hospitalId?.target?.value;
+// this.apiService.getData(doctorApi).subscribe((data: any) => {
+// this.DoctorList = data.Data;
+// this.hospitalId = hospitalId?.target?.value;
+
+// // console.log(this.DoctorList);
+// });
+// }
+
+    getCSFId(CSFId: any ){
+      const labDataApi = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetLabByUser?id_hospital=4925&id_doctor=-1&id_combo=-1&id_service_code=&StartDate_Collect=&EndDate_Collect=&StartDate_Receive=&EndDate_Receive=&StartDate_Complete_Lab=&EndDate_Complete_Lab=&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20'
+      this.apiService.getData(labDataApi).subscribe((data: any) => {
+        this.CSFId = CSFId?.target?.value; 
+        
+      });
+      
+}
+// opening window using ID link 
+getDetails(CSFIdEncrypt: any){
+  this.CSFIdEncrypt = CSFIdEncrypt?.target?.value;
+  const CSFIdLink = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCSFIdByEncrypt?CSFIdEncrypt=' + CSFIdEncrypt?.target?.value;
+  window.open(CSFIdLink, '_blank').focus();
+   
+}
 }

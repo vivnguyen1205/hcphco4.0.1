@@ -263,7 +263,7 @@
                         Customer Name 
                     </th>
                     <th pSortableColumn="name" class="title">
-                        Date of Birth <p-sortIcon field="name" style="size: 1px;"/>
+                        Date of Birth <p-sortIcon field="name"/>
                     </th>
                     <th pSortableColumn="category" class="title">
                         Location <p-sortIcon field="category" />
@@ -293,13 +293,13 @@
             </ng-template>
             <ng-template pTemplate="body" let-data>
                 <tr >
-                    <td class = text> 
+                    <td class = text (click)="getDetails(CSFIdEncrypt)"> 
                         <!-- customer name  -->
-                        null
+                       {{data.customer_name}}
                     </td>
                     <td class = text>
                         <!-- dob -->
-                        null
+                      {{data.customer_date_of_birth}}
                     </td>
                     <td class = text>
                         <!-- location -->
