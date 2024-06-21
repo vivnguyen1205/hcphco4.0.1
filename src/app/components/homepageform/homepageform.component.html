@@ -1,0 +1,347 @@
+
+<div class="container-fluid" data-select2-id="922" style = "padding:20px">
+    <div class="card" data-select2-id="921" >
+        <div class="card-body cb-search" data-select2-id="920">
+            <div class="row" data-select2-id="919">
+                <!-- LAB CODE INPUT  -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Lab code:</label>
+                        <div class="input-group">
+                            <input id="labCode" type="search" class="form-control" placeholder="Enter lab code">
+                        </div>
+                    </div>
+                </div>
+                <!-- CUSTOMER NAME INPUT  -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Customer name:</label>
+                        <div class="input-group">
+                            <input id="customerName" type="search" class="form-control"
+                                placeholder="Enter Customer name">
+                        </div>
+                    </div>
+                </div>
+                <!-- LOCATION SELECTOR -->
+                <div class="col-md-3 col-sm-3 col-12">
+
+                    <div class="form-group">
+                        <label class="text-color-gs">Location:</label>
+                        <div id="Hospitals">
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;"
+                                    (change)="onChangeHospital($event)">
+                                    <option selected="selected" value="0">--All--</option>
+                                    <option *ngFor="let hospital of HospitalList" [value]="hospital.Id">
+                                        {{hospital.Name}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!-- REFERRED DOCTOR -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Referred Doctor :</label>
+                        <div id="Hospitals"> </div>
+                        <div class="form-group">
+                            <select class="form-control select2" style="width: 100%;" (change)="onChangeDoctor($event)">
+                                <option selected="selected">--All--</option>
+                                <option *ngFor="let doctor of DoctorList" [value]="doctor.Id">
+                                    {{doctor.Name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            
+            
+           
+                <!-- <div class="card flex justify-content-center">
+                    <p-calendar 
+                        [(ngModel)]="rangeDates" 
+                        selectionMode="range" 
+                        [readonlyInput]="true" />
+                </div>
+                <div class="flex-auto">
+                
+                    <p-calendar 
+                        [(ngModel)]="date2" 
+                        selectionMode="range" 
+                        [iconDisplay]="'input'" 
+                        [showIcon]="true" 
+                        inputId="icondisplay" />
+                </div> -->
+            <!-- DATE RANGE  -->
+          
+            <div class=row>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group" >
+                        <label class="text-color-gs" >Sample recieved date at GS: </label>
+                
+                            <p-calendar 
+                                [(ngModel)]="date1" 
+                                selectionMode="range" 
+                                [iconDisplay]="'input'" 
+                                [showIcon]="true" 
+                                inputId="icondisplay" 
+                                class="col-md-3 col-sm-3 col-12"/>
+                    
+                        <!-- <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div> -->
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <!-- DATE RANGE 2 -->
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Sample draw date: </label>
+                        <p-calendar 
+                        [(ngModel)]="date2" 
+                        selectionMode="range" 
+                        [iconDisplay]="'input'" 
+                        [showIcon]="true" 
+                        inputId="icondisplay" />
+                        <!-- <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div> -->
+                        <!-- /.input group -->
+                    </div>
+                </div>
+
+                <!-- DATE RANGE 3 -->
+
+                <div class="col-md-3 ">
+                    <div class="form-group">
+                        <label class="text-color-gs">Lab completion date: </label>
+                        <p-calendar 
+                        [(ngModel)]="date3" 
+                        selectionMode="range" 
+                        [iconDisplay]="'input'" 
+                        [showIcon]="true" 
+                        inputId="icondisplay" />
+
+                        <!-- <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="reservation">
+                        </div> -->
+                        <!-- /.input group -->
+                    </div>
+                </div>
+                <!-- INSERT MULTIPLE SELECT ELEMENT -->
+
+          
+        </div>
+            <!-- FIX THIS  -->
+            <div class=row>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="text-color-gs">Combo:</label>
+                        <div id="combo"> </div>
+                        <div class="form-group">
+                            <select class="form-control select2" style="width: 100%;" (change)="onChangeCombo($event)">
+                                <option selected="selected">--All--</option>
+                                <option *ngFor="let combo of ComboList" [value]="combo.Id">
+                                    {{combo.Name}}
+                                </option>
+                          
+
+
+                            </select>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="form-group" style="margin-right: 10px;">
+                        <label class="text-color-gs">List of samples:</label>
+                        <div class="button-checkbox">
+                            <div class="form-group">
+
+                                <input type="radio" name="radioXN" id="radioXN" autocomplete="off" value="-1"
+                                    checked="">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN" class="btn btn-secondary btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">All</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-1" class="btn btn-success btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Completed</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-3" autocomplete="off" value="11">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-3" class="btn btn-warning btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Regain blood sample</span>
+                                    </label>
+                                </div>
+
+
+                                <input type="radio" name="radioXN" id="radioXN-2" autocomplete="off" value="5">
+                                <div class="btn-group" style="margin-right: 10px;">
+                                    <label for="radioXN-2" class="btn btn-danger btn-sm">
+                                        <span class="fa fa-check-square fa-lg"></span>
+                                        <span class="fa fa-square fa-lg"></span>
+                                        <span class="content">Overdue</span>
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-12">
+                    <div class="form-group">
+                        <label class="d-none d-sm-block">&nbsp;</label>
+                        <div class="text-center text-sm-right" >
+                            <a (click)="onSearch()" class="btn bg-gradient-primary" style="margin-right: 20px;">
+                                <i class="fa fa-search"></i> Search
+                                <div></div>
+                            </a>
+                            <a onclick="Search('export')" class="btn bg-gradient-primary">
+                                <i class="fa fa-file-excel"></i> Export excel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE STARTS  -->
+
+<div >
+    <div class="card">
+        <p-table #dt [value]="dataList">
+            <ng-template pTemplate="header">
+                <tr>
+
+                    <th pSortableColumn="code" class="title">
+                        Customer Name 
+                    </th>
+                    <th pSortableColumn="name" class="title">
+                        Date of Birth <p-sortIcon field="name" style="size: 1px;"/>
+                    </th>
+                    <th pSortableColumn="category" class="title">
+                        Location <p-sortIcon field="category" />
+                    </th>
+                    <th pSortableColumn="referredDoctor" class="title">
+                        Referred Doctor <p-sortIcon field="referredDoctor" />
+                    </th>
+                    <th pSortableColumn="testPackage" class="title">
+                        Test Package <p-sortIcon field="testPackage" />
+                    </th>
+                    <th pSortableColumn="sampleStatus" class="title">
+                        Sample Status <p-sortIcon field="sampleStatus" />
+                    </th>
+                    <th pSortableColumn="combo" class="title">
+                        Combo <p-sortIcon field="combo" />
+                    </th>
+                    <th pSortableColumn="comboStatus" class="title">
+                        Combo Status <p-sortIcon field="comboStatus" style="size:  10px;"/>
+                    </th>
+                    <th pSortableColumn="labCode" class="title">
+                       Lab Code <p-sortIcon field="labCode" />
+                    </th>
+                    <th pSortableColumn="sampleDrawDate" class="title">
+                        Sample Draw Date <p-sortIcon field="sampleDrawDate" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr >
+                    <td class = text> 
+                        <!-- customer name  -->
+                        null
+                    </td>
+                    <td class = text>
+                        <!-- dob -->
+                        null
+                    </td>
+                    <td class = text>
+                        <!-- location -->
+                        {{data.hospital_name}}
+                    </td>
+                    <td class = text>
+                        <!-- referred doctor -->
+                        {{data.doctor_name}}
+                    </td>
+                    <td class = text>
+                        <!-- test package  -->
+                        {{data.service_code_name}}
+                    </td>
+                    <td class = text>
+                        <!-- sample status  -->
+                        {{data.sample_status}}
+                    </td>
+                    <td class = text>
+                        <!-- combo -->
+                        {{data.combo_name}}
+                    </td>
+                    <td class = text>
+                        <!-- combo status -->
+                        {{data.combo_status_name}}
+                    </td>
+                    <td class = text>
+                        <!-- lab code-->
+                        {{data.doctor_name}}
+                    </td>
+                    <td class = text>
+                        <!-- sample draw date  -->
+                        {{data.doctor_name}}
+                    </td>
+                   
+                    <!-- <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<!-- <option *ngFor="let doctor of DoctorList">
+    {{doctor.Name}}
+</option> -->

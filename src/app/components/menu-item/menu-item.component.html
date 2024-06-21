@@ -1,0 +1,109 @@
+<a (click)="handleMainMenuAction()" class="nav-link" [ngClass]="{active: isMainActive || isOneOfChildrenActive}">
+    <!-- <i class="nav-icon {{ menuItem.iconClasses }}"></i>
+    <p>{{ menuItem.name }}
+        <i
+            *ngIf="isExpandable && menuItem.children.length > 0"
+            class="right fas fa-angle-right"
+            [@rotate]="isMenuExtended"
+        ></i>
+    </p> -->
+</a>
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+            <a href="/" class="nav-link home-page active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    <b>Home page</b>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/notification" class="nav-link notification">
+                <i class="nav-icon fas fa-bell"></i>
+                <p>
+                    <b>Notification <span class="right badge badge-danger count-noti-menu"></span></b>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/loyalty-program" class="nav-link loyalty-program">
+                <i class="nav-icon fas fa-gift"></i>
+                <p>
+                    <b>Loyalty program</b>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item categories" id="group-menu"><a class="nav-link"> <i class="nav-icon fas fa-folder-open"></i>
+                <p> <b>GS-Care</b> <i class="right fas fa-angle-left"></i> </p>
+            </a>
+            <!-- <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item" title="Sản Phẩm"> <a href="/gscare-products" class="nav-link pl-3 gscare-products">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Sản Phẩm</p>
+                    </a> </li>
+            </ul>
+            <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item" title="Tra cứu bệnh lý"> <a href="/pathological"
+                        class="nav-link pl-3 pathological"> <i class="far fa-circle nav-icon"></i>
+                        <p>Tra cứu bệnh lý</p>
+                    </a> </li>
+            </ul>
+            <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item" title="Chương trình ưu đãi"> <a href="/gscare-notification-promotion"
+                        class="nav-link pl-3 gscare-notification-promotion"> <i class="far fa-circle nav-icon"></i>
+                        <p>Chương trình ưu đãi</p>
+                    </a> </li>
+            </ul>
+            <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item " title="Hội nghị/hội thảo"> <a href="#"
+                        onclick="toController('KRyg2k1gq1EmU6NAphAmaw==')" class="nav-link pl-3 gscare-notification3">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Hội nghị/hội thảo</p>
+                    </a> </li>
+            </ul>
+            <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item " title="C.Trình vì cộng đồng "> <a href="#"
+                        onclick="toController('CqkSvPvn15+htKfLbfsgEQ==')" class="nav-link pl-3 gscare-notification4">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>C.Trình vì cộng đồng </p>
+                    </a> </li>
+            </ul>
+            <ul class="nav nav-treeview m-0 gscare">
+                <li class="nav-item " title="Cơ hội học tập"> <a href="#"
+                        onclick="toController('MfzhcioAM0Z05PU/kZSnHA==')" class="nav-link pl-3 gscare-notification5">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cơ hội học tập</p>
+                    </a> </li>
+            </ul>
+        </li> -->
+        <li class="nav-item">
+            <a onclick="Popup.Show('Change password', $('#ChangePassword_Template').tmpl(), 500)" class="nav-link">
+                <i class="nav-icon fas fa-lock-open"></i>
+                <p>
+                    Change password
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/logout" onclick="localStorage.removeItem('HCPApplicationCookie')" class="nav-link">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                    Logout
+                </p>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- <ul class="nav nav-treeview" *ngFor="let item of menuItem.children" [@openClose]="isMenuExtended">
+    <li class="nav-item">
+        <a
+            [routerLink]="item.path"
+            [routerLinkActive]="'active'"
+            class="nav-link"
+        >
+            <i class="nav-icon {{ item.iconClasses }}"></i>
+            <p>{{ item.name}}</p>
+        </a>
+    </li>
+</ul> -->

@@ -1,0 +1,93 @@
+
+<div style="padding:20px">
+    <div class="card">
+        <p-table #dt [value]="dataList"  >
+            <ng-template pTemplate="header">
+                <tr>
+
+                    <th pSortableColumn="code" class="title">
+                        Customer Name 
+                    </th>
+                    <th pSortableColumn="name" class="title">
+                        Date of Birth <p-sortIcon field="name" />
+                    </th>
+                    <th pSortableColumn="category" class="title">
+                        Location <p-sortIcon field="category" />
+                    </th>
+                    <th pSortableColumn="referredDoctor" class="title">
+                        Referred Doctor <p-sortIcon field="referredDoctor" />
+                    </th>
+                    <th pSortableColumn="testPackage" class="title">
+                        Test Package <p-sortIcon field="testPackage" />
+                    </th>
+                    <th pSortableColumn="sampleStatus" class="title">
+                        Sample Status <p-sortIcon field="sampleStatus" />
+                    </th>
+                    <th pSortableColumn="combo" class="title">
+                        Combo <p-sortIcon field="combo" />
+                    </th>
+                    <th pSortableColumn="comboStatus" class="title">
+                        Combo Status <p-sortIcon field="comboStatus" style="size:  10px;"/>
+                    </th>
+                    <th pSortableColumn="labCode" class="title">
+                       Lab Code <p-sortIcon field="labCode" />
+                    </th>
+                    <th pSortableColumn="sampleDrawDate" class="title">
+                        Sample Draw Date <p-sortIcon field="sampleDrawDate" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr >
+                    <td class = text> 
+                        <!-- customer name  -->
+                        null
+                    </td>
+                    <td class = text>
+                        <!-- dob -->
+                        null
+                    </td>
+                    <td class = text>
+                        <!-- location -->
+                        {{data.hospital_name}}
+                    </td>
+                    <td class = text>
+                        <!-- referred doctor -->
+                        {{data.doctor_name}}
+                    </td>
+                    <td class = text>
+                        <!-- test package  -->
+                        {{data.service_code_name}}
+                    </td>
+                    <td class = text>
+                        <!-- sample status  -->
+                        {{data.sample_status}}
+                    </td>
+                    <td class = text>
+                        <!-- combo -->
+                        {{data.combo_name}}
+                    </td>
+                    <td class = text>
+                        <!-- combo status -->
+                        {{data.combo_status_name}}
+                    </td>
+                    <td class = text>
+                        <!-- lab code-->
+                        {{data.doctor_name}}
+                    </td>
+                    <td class = text>
+                        <!-- sample draw date  -->
+                        {{data.doctor_name}}
+                    </td>
+                   
+                    <!-- <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<!-- <option *ngFor="let doctor of DoctorList">
+    {{doctor.Name}}
+</option> -->

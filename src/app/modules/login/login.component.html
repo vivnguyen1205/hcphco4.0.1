@@ -1,0 +1,107 @@
+<body class="login-page" style="min-height: 439.32px;">
+    <div class="login-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="/" class="h1">
+                    <!-- LOGO IMAGE -->
+                    <span>
+                        <img src="../../../assets/img/GSlogo2.png">
+                    </span>
+                    <br>
+                    <b>HCP-HCO APP</b>
+                </a>
+            </div>
+            <!-- login component -->
+            <div class="card-body">
+                <p class="login-box-msg">Login to the system</p>
+                <form [formGroup]="formGroup">
+                    <!-- username -->
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <div class="input-group-append" id="border">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+
+                                </div>
+                            </div>
+
+                            <input placeholder="Username" autocomplete="off" formControlName="username"
+                                class="form-control input-username text-box single-line" data-val="true"
+                                data-val-length="The password is at least 6 characters" data-val-length-max="100"
+                                data-val-length-min="6" data-val-required="Please enter password" id="username"
+                                name="username" type="username" value="">
+                            <div
+                                *ngIf="formGroup.get('username').hasError('required') && formGroup.get('username').touched">
+                                username is required
+                            </div>
+                            <a>
+                                <!-- <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i> -->
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- \
+  
+
+<input type="text" id="username" 
+placeholder="Enter your username" />
+</div> -->
+                    <!-- <input  class="form-control input-password text-box single-line" > -->
+
+                    <!-- <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a> -->
+
+                    <!-- </div> -->
+                    <!-- <div class="mb-3">
+<div class="input-group">
+<div class="input-group-append">
+    <div class="input-group-text">
+        <span class="fas fa-user"></span>
+<input type="text" name = "userName" [(ngModel)]="loginObj.userName" placeholder="Username" id="username" required>
+
+    </div>
+</div>
+<input autocomplete="off" class="form-control text-box single-line" data-val="true" data-val-required="Please enter your Username" id="Username" name="Username" placeholder="Username" type="text" value="">
+</div>
+</div> -->
+                    <!-- password -->
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <div class="input-group-append" id="border">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- <input type="text" name = "userName" placeholder="Username" id="username" required> -->
+                            <!-- PASSWORD INPUT -->
+                            <input type="password" id="Password" name="Password" placeholder="Password"
+                                class="form-control input-password text-box single-line" required
+                                data-val-required="Please enter password" data-val-length-min="6"
+                                data-val-length="The password is at least 6 characters" formControlName="password"
+                                data-val="true" data-val-length-max="100" value="">
+                                
+                            <!-- <a>
+                                <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a> -->
+                        </div>
+                    </div>
+                    <!-- login button  -->
+                    <a class="btn btn-primary btn-block btn-login" (click)="onLogin()">Login</a>
+                    <p class="mb-1 mt-23">
+
+                        <a onclick="SendOTP()">Reset Password</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="/privacy-policy" target="_blank">Privacy policy</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div id="loading"></div>

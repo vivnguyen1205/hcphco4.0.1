@@ -1,0 +1,184 @@
+<section class="content mt-3">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body cb-search">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-12">
+                        <div class="form-group">
+                            <label class="text-color-gs">Keyword:</label>
+                            <div class="input-group">
+                                <input id="KeyWord" type="search" class="form-control" placeholder="Enter Keyword">
+                                <a onclick="Search()" class="btn bg-gradient-primary ml-0 ml-sm-2">
+                                    <i class="fa fa-search"></i> Search
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-3 col-12">
+                        <div class="form-group mb-0">
+                        <div class="form-group">
+                                    <label class="text-color-gs">Phòng khám/Bệnh viện</label>
+                                    <div id="Hospitals"> </div>
+                                    <div class="form-group">
+                                        <select class="form-control select2" style="width: 100%;">
+                                            <option selected="selected">--All--</option>
+                                            <option *ngFor="let hospital of HospitalList">
+                                                {{hospital.Name}}
+                                            </option>
+                                           
+                                            <!-- <option *ngFor="let doctor of DoctorList">
+                                                {{doctor.Name}}
+                                            </option> -->
+                                            <!-- <option selected="selected">--All--</option> -->
+            
+                                            <!--ADD LOGIC TO CHANGE OPTIONS FOR REFERRED DOCTOR DEPENDING ON THE HOSPiTAL LOCATION  -->
+            
+                                        </select>
+                                        
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+               
+                        <div class="form-group">
+                            <label class="text-color-gs">Type:</label>
+                            <div class="button-checkbox">
+                                <div class="form-group">
+                                    <div class="inline-block">
+                                        <input type="radio" name="radioType" id="radioType" autocomplete="off" value=""
+                                            checked="">
+                                        <div class="btn-group">
+                                            <label for="radioType" class="btn btn-secondary btn-sm">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">All</span>
+                                                <span class="right badge badge-danger count-noti">0</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                  
+                                        <input type="radio" name="radioType" id="radioType-1" autocomplete="off"
+                                            value="daCoKetQua">
+                                        <div class="btn-group" style=" margin-right: 12px">
+                                            <label for="radioType-1" class="btn btn-sm noti-type daCoKetQua">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Result available</span>
+                                                <span class="right badge badge-danger count_daCoKetQua">0</span>
+                                            </label>
+                                        </div>
+                                  
+                                        <input type="radio" name="radioType" id="radioType-2" autocomplete="off"
+                                            value="mauVeGS">
+                                        <div class="btn-group">
+                                            <label for="radioType-2" class="btn btn-sm noti-type mauVeGS">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Sample received at GS</span>
+                                                <span class="right badge badge-danger count_mauVeGS">0</span>
+                                            </label>
+                                        </div>
+                             
+                                        <input type="radio" name="radioType" id="radioType-3" autocomplete="off"
+                                            value="thuMauLai">
+                                        <div class="btn-group">
+                                            <label for="radioType-3" class="btn btn-sm noti-type thuMauLai">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Regain blood sample</span>
+                                                <span class="right badge badge-danger count_thuMauLai">0</span>
+                                            </label>
+                                        </div>
+                                        
+                                   
+                                        <input type="radio" name="radioType" id="radioType-4" autocomplete="off"
+                                            value="chuongTrinhDiemThuong">
+                                        <div class="btn-group">
+                                            <label for="radioType-4" class="btn btn-sm noti-type chuongTrinhDiemThuong">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Loyalty program</span>
+                                                <span
+                                                    class="right badge badge-danger count_chuongTrinhDiemThuong">0</span>
+                                            </label>
+                                        </div>
+                          
+                                  
+                                        <input type="radio" name="radioType" id="radioType-5" autocomplete="off"
+                                            value="nhacNho">
+                                        <div class="btn-group">
+                                            <label for="radioType-5" class="btn btn-sm noti-type nhacNho">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Remind</span>
+                                                <span class="right badge badge-danger count_nhacNho">0</span>
+                                            </label>
+                                        </div>
+                             
+                                
+                                        <input type="radio" name="radioType" id="radioType-6" autocomplete="off"
+                                            value="thongTin">
+                                        <div class="btn-group">
+                                            <label for="radioType-6" class="btn btn-sm noti-type thongTin">
+                                                <span class="fa fa-check-square fa-lg"></span>
+                                                <span class="fa fa-square fa-lg"></span>
+                                                <span class="content">Information</span>
+                                                <span class="right badge badge-danger count_thongTin">0</span>
+                                            </label>
+                                        </div>
+                               
+                                </div>
+                            </div>
+                      
+            </div>
+        </div>
+        <!-- <div id="tableData" class="jsgrid" style="position: relative; height: auto; width: 100%;">
+            <div class="jsgrid-grid-header">
+                <table class="jsgrid-table">
+                    <tr class="jsgrid-header-row">
+                        <th class="jsgrid-header-cell" style="width: 170px;">Title</th>
+                        <th class="jsgrid-header-cell" style="width: 350px;">Content</th>
+                        <th class="jsgrid-header-cell" style="width: 90px;">Type</th>
+                        <th class="jsgrid-header-cell" style="width: 100px;">Create date</th>
+                    </tr>
+                    <tr class="jsgrid-filter-row" style="display: none;">
+                        <td class="jsgrid-cell" style="width: 170px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 350px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 90px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 100px;"><input type="text"></td>
+                    </tr>
+                    <tr class="jsgrid-insert-row" style="display: none;">
+                        <td class="jsgrid-cell" style="width: 170px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 350px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 90px;"><input type="text"></td>
+                        <td class="jsgrid-cell" style="width: 100px;"><input type="text"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="jsgrid-grid-body">
+                <table class="jsgrid-table">
+                    <tbody>
+                        <tr class="jsgrid-nodata-row">
+                            <td class="jsgrid-cell" colspan="4">No data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="jsgrid-pager-container" style="display: none;">
+                <div class="jsgrid-pager">Pages: <span
+                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                            href="javascript:void(0);">First</a></span> <span
+                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                            href="javascript:void(0);">Prev</a></span> <span
+                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                            href="javascript:void(0);">Next</a></span> <span
+                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                            href="javascript:void(0);">Last</a></span> &nbsp;&nbsp; 1 of 0 | Total rows: 0 rows </div>
+            </div>
+            <div class="jsgrid-load-shader" style="position: absolute; inset: 0px; z-index: 1000; display: none;"></div>
+            <div class="jsgrid-load-panel"
+                style="position: absolute; top: 50%; left: 50%; z-index: 1000; margin-top: -40px; margin-left: -120px; display: none;">
+                Please, wait...</div>
+        </div> -->
+    </div>
