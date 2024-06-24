@@ -1,7 +1,13 @@
+import { openCloseAnimation } from './../menu-item/menu-item.animations';
 import {ApiService} from './../../services/api.service';
 import {Component, OnInit} from '@angular/core';
 import {CalendarModule} from 'primeng/calendar';
 import {FormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgDatePickerModule } from 'ng-material-date-range-picker';
+// import { ColComponent, DateRangePickerComponent, RowComponent } from '@coreui/angular';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 import {HomepageComponent} from '@pages/homepage/homepage.component';
 // import {ApiService} from './../../services/api.service';
 // import { HomepageformComponent } from '@components/homepageform/homepageform.component';
@@ -16,27 +22,48 @@ import {SortEvent} from 'primeng/api';
 import {ProductService} from '../../services/productservice';
 import {Product} from '../../products';
 import {EventListenerObject} from 'rxjs/internal/observable/fromEvent';
+import { Data } from '@angular/router';
+
+
 @Component({
     selector: 'app-homepageform',
     templateUrl: './homepageform.component.html',
-    styleUrl: './homepageform.component.scss'
+    styleUrl: './homepageform.component.scss',
+  
 })
 export class HomepageformComponent implements OnInit {
     @ViewChild('dt') dt: Table;
+    isSorted: boolean = null;
     constructor(private apiService: ApiService) {}
     hospitalId: number;
     CSFId: any;
     CSFIdEncrypt: any;
-    CSFIdLink: any;
+    CSFIdLink: string;
+
     doctorId: number;
     rangeDates: Date[] | undefined;
     comboId: number;
-
+// DATE RANGE PICKER 
     date1: Date | undefined;
-
     date2: Date | undefined;
-
     date3: Date | undefined;
+    onChangeRecieveDate(date1: any) {
+      this.date1 = date1?.target?.value;
+      console.log(this.date1);
+    }
+    onChangeDrawDate(date2: any) {
+      this.date2 = date2?.target?.value;
+    }
+    onChangeCompleteDate(date3: any) {
+      this.date3 = date3?.target?.value;
+    }
+    // BUTTON 
+    visible: boolean = false;
+
+    showDialog() {
+        this.visible = true;
+    
+}
 
     // DEFINING VARIABLES AND CONTSTANTS
     private tokenKey: string =
@@ -55,11 +82,13 @@ export class HomepageformComponent implements OnInit {
     ComboList: any[] = [];
     dataList: any[] = [];
     data: any[];
-    InitialValue: Product[];
+
 
     ngOnInit(): void {
         this.getHospital();
         this.getCombo();
+        this.InitialValue = [...this.data];
+        // this.getCSFId();
         // this.getDoctor();
         // this.getCombo();
     }
@@ -89,58 +118,44 @@ export class HomepageformComponent implements OnInit {
         });
       }
     
-    
-   
-      
-    
     onChangeDoctor(doctorId: any) { // retrieves the doctor ID 
       this.doctorId = doctorId?.target?.value;
     }
-    
-
     onChangeCombo(comboId: any) {
       
         this.comboId = comboId?.target?.value;
         // console.log(this.ComboList);
   }
-  onChangeRecieveDate(date1: any) {
-    this.date1 = date1?.target?.value;
-  }
-  onChangeDrawDate(date2: any) {
-    this.date2 = date2?.target?.value;
-  }
-  onChangeCompleteDate(date3: any) {
-    this.date3 = date3?.target?.value;
-  }
-//   customSort(event: SortEvent) {
-//     if (this.isSorted == null || this.isSorted === undefined) {
-//         this.isSorted = true;
-//         this.sortTableData(event);
-//     } else if (this.isSorted == true) {
-//         this.isSorted = false;
-//         this.sortTableData(event);
-//     } else if (this.isSorted == false) {
-//         this.isSorted = null;
-//         this.data = [...this.data];
-//         this.dt.reset();
-//     }
-// }
-// isSorted: boolean = null;
+  
 
-//   sortTableData(event) {
-//     event.data.sort((data1, data2) => {
-//         let value1 = data1[event.field];
-//         let value2 = data2[event.field];
-//         let result = null;
-//         if (value1 == null && value2 != null) result = -1;
-//         else if (value1 != null && value2 == null) result = 1;
-//         else if (value1 == null && value2 == null) result = 0;
-//         else if (typeof value1 === 'string' && typeof value2 === 'string') result = value1.localeCompare(value2);
-//         else result = value1 < value2 ? -1 : value1 > value2 ? 1 : 0;
+  // SORTING FUNCTION
+  customSort(event: SortEvent) {
+    if (this.isSorted == null || this.isSorted === undefined) {
+        this.isSorted = true;
+        this.sortTableData(event);
+    } else if (this.isSorted == true) {
+        this.isSorted = false;
+        this.sortTableData(event);
+    } else if (this.isSorted == false) {
+        this.isSorted = null;
+        this.dataList = [...this.InitialValue];
+        this.dt.reset();
+    }
+}
+  sortTableData(event) {
+    event.data.sort((data1, data2) => {
+        let value1 = data1[event.field];
+        let value2 = data2[event.field];
+        let result = null;
+        if (value1 == null && value2 != null) result = -1;
+        else if (value1 != null && value2 == null) result = 1;
+        else if (value1 == null && value2 == null) result = 0;
+        else if (typeof value1 === 'string' && typeof value2 === 'string') result = value1.localeCompare(value2);
+        else result = value1 < value2 ? -1 : value1 > value2 ? 1 : 0;
 
-//         return event.order * result;
-//     });
-//   }
+        return event.order * result;
+    });
+  }
 
     onSearch() {
         const labDataApi =
@@ -175,30 +190,12 @@ export class HomepageformComponent implements OnInit {
 
         
     }
- 
-// onChangeHospital(hospitalId: any) { // gets the doctor list changes on hospital change 
-// const doctorApi = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryDoctor?hospitalId=' +
-// hospitalId?.target?.value;
-// this.apiService.getData(doctorApi).subscribe((data: any) => {
-// this.DoctorList = data.Data;
-// this.hospitalId = hospitalId?.target?.value;
-
-// // console.log(this.DoctorList);
-// });
-// }
-
-    getCSFId(CSFId: any ){
-      const labDataApi = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetLabByUser?id_hospital=4925&id_doctor=-1&id_combo=-1&id_service_code=&StartDate_Collect=&EndDate_Collect=&StartDate_Receive=&EndDate_Receive=&StartDate_Complete_Lab=&EndDate_Complete_Lab=&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20'
-      this.apiService.getData(labDataApi).subscribe((data: any) => {
-        this.CSFId = CSFId?.target?.value; 
-        
-      });
-      
+    InitialValue: Data[];
+getCSFID(CSFId: any){
+  this.CSFId = CSFId?.target?.value ;
 }
-// opening window using ID link 
-getDetails(CSFIdEncrypt: any){
-  this.CSFIdEncrypt = CSFIdEncrypt?.target?.value;
-  const CSFIdLink = 'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCSFIdByEncrypt?CSFIdEncrypt=' + CSFIdEncrypt?.target?.value;
+getDetails(CSFId: any){
+  const CSFIdLink = 'https://hcp-stg.genesolutions.vn/details?id=' + CSFId;
   window.open(CSFIdLink, '_blank').focus();
    
 }
