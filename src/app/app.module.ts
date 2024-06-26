@@ -2,12 +2,33 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { Router, RouterModule } from '@angular/router';
 import { NotificationComponent } from '@pages/notification/notification.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from './app.component';
+import { InfoDemo } from '@components/homepageform/popup/infodemo';
 // import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+// import { App } from './app';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// // import { FormsModule } from '@angular/forms';
+// import { FormLayoutDemoComponent } from './formlayoutdemo.component';
+// import { FormLayoutDemoRoutingModule } from './formlayoutdemo-routing.module';
+import { AutoCompleteModule } from "primeng/autocomplete";
+// import { CalendarModule } from "primeng/calendar";
+import { ChipsModule } from "primeng/chips";
+// import { DropdownModule } from "primeng/dropdown";
+import { InputMaskModule } from "primeng/inputmask";
+import { InputNumberModule } from "primeng/inputnumber";
+import { CascadeSelectModule } from "primeng/cascadeselect";
+import { MultiSelectModule } from "primeng/multiselect";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { InputTextModule } from "primeng/inputtext";
+
 import { CalendarModule } from 'primeng/calendar';
 import { MainComponent } from '@modules/main/main.component';
 import { LoginComponent } from '@modules/login/login.component';
@@ -56,12 +77,16 @@ import { ProfileComponent } from '@pages/profile/profile.component';
 import { TableComponent } from './components/table/table.component';
 import { Table } from 'primeng/table';
 import { ImportsModule } from 'primeimports';
+import { DetailsComponent } from './components/details/details.component';
+import { PopupComponent } from '@components/homepageform/popup/popup.component';
+// import { PopupComponent } from './components/homepageform/popup/popup.component';
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
     declarations: [
 
          NotificationComponent,
+
         // // BreakpointObserver,
         MainComponent,
         LoginComponent,
@@ -94,11 +119,16 @@ registerLocaleData(localeEn, 'en-EN');
         HomepageComponent,
         HomepageformComponent,
         AppComponent,
+        DetailsComponent,
+        PopupComponent,
+        InfoDemo,
         // TableComponent
 
     ],
     bootstrap: [AppComponent],
     imports: [
+        
+
         ImportsModule,
         CalendarModule,
         TableComponent,
@@ -107,6 +137,7 @@ registerLocaleData(localeEn, 'en-EN');
         BrowserModule,
         FormsModule,
         RouterModule,
+        NgxDaterangepickerMd.forRoot(),
         StoreModule.forRoot({ auth: authReducer, ui: uiReducer }),
         AppRoutingModule,
         ReactiveFormsModule,
@@ -116,7 +147,20 @@ registerLocaleData(localeEn, 'en-EN');
             positionClass: 'toast-top-right',
             preventDuplicates: true
         }),
-        FontAwesomeModule
+        ButtonModule,
+        FontAwesomeModule,
+        CommonModule,
+		FormsModule,
+		AutoCompleteModule,
+		CalendarModule,
+		ChipsModule,
+		DropdownModule,
+		InputMaskModule,
+		InputNumberModule,
+		CascadeSelectModule,
+		MultiSelectModule,
+		InputTextareaModule,
+		InputTextModule
     ],
     providers: [
         HomepageformComponent,

@@ -1,0 +1,52 @@
+<h5> [Consent form: {{data.id_lcs_created}} ] - [Lab Code:{{data.lab_code}}]</h5>
+<p-tabView>
+
+
+    <p-tabPanel header="Header I">
+        <p-accordion [multiple]="true" [activeIndex]="[0]">
+            <p-accordionTab header="Header I">
+                <p-table [value]="data"  class="p-datatable-sm">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                           <td>{{ data.id_sale_team }}</td>
+                            <td>{{ data.id_sale_team }}</td>
+                            <td>{{ data.id_sale_team }}</td>
+                            <td>{{ data.id_sale_team }}</td> -->
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-accordionTab>
+            <p-accordionTab class="text-color-gs" header="Header II">
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
+                </p>
+            </p-accordionTab>
+            <p-accordionTab header="Header III" class="text-color-gs">
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos...
+                </p>
+            </p-accordionTab>
+        </p-accordion>
+        <p>
+            Lorem ipsum dolor sit amet...
+        </p>
+    </p-tabPanel>
+    <p-tabPanel header="Header II">
+        <p>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
+        </p>
+    </p-tabPanel>
+    <p-tabPanel header="Header III">
+        <p>
+            At vero eos et accusamus et iusto odio dignissimos...
+        </p>
+    </p-tabPanel>
+</p-tabView>

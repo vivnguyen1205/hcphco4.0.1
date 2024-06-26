@@ -22,7 +22,6 @@ export class ApiService {
     getData(API_LINK : string): Observable<any> {
         return this.http.get(API_LINK);
     }
-    
 
 
     login(obj: any): Observable<any> {

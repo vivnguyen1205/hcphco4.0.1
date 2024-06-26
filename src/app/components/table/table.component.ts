@@ -10,7 +10,7 @@ import {Table} from 'primeng/table';
 import {ImportsModule} from 'primeimports';
 import {SortEvent} from 'primeng/api';
 import {ProductService} from '../../services/productservice';
-import {Product} from '../../products';
+// import {Product} from '../../products';
 // import { HomepageformComponent } from '@components/homepageform/homepageform.component';
 // import { SortEvent } from 'primeng/api';
 // import { ApiService } from '../../services/api.service';
@@ -45,7 +45,7 @@ export class TableComponent implements OnInit {
     data: any[];
     
 
-    initialValue: Product[];
+    // initialValue: Product[];
 
     isSorted: boolean = null;
 
