@@ -2,9 +2,9 @@
 <p-tabView>
 
 
-    <p-tabPanel header="Header I">
+    <p-tabPanel header="General Information">
         <p-accordion [multiple]="true" [activeIndex]="[0]">
-            <p-accordionTab header="Header I">
+            <p-accordionTab header="Customer Information">
                 <p-table [value]="data"  class="p-datatable-sm">
                     <ng-template pTemplate="header">
                         <tr>
@@ -19,7 +19,7 @@
                            <td>{{ data.id_sale_team }}</td>
                             <td>{{ data.id_sale_team }}</td>
                             <td>{{ data.id_sale_team }}</td>
-                            <td>{{ data.id_sale_team }}</td> -->
+                            <td>{{ data.id_sale_team }}</td> 
                         </tr>
                     </ng-template>
                 </p-table>
@@ -39,12 +39,27 @@
             Lorem ipsum dolor sit amet...
         </p>
     </p-tabPanel>
-    <p-tabPanel header="Header II">
-        <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium...
-        </p>
+    <p-tabPanel header="Sample list">
+        <p-table [value]="data"  class="p-datatable-sm">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Test package</th>
+                    <th>Sample Type</th>
+                    <th>Status</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr>
+                   <td>{{ data.sample_list.lab_code}}</td>
+                    <td>{{ data.data.sample_list.id_status }}</td>
+                    <td>{{ data.id_sale_team }}</td>
+                    <td>{{ data.id_sale_team }}</td> 
+                </tr>
+            </ng-template>
+        </p-table>
     </p-tabPanel>
-    <p-tabPanel header="Header III">
+    <p-tabPanel header="Results list">
         <p>
             At vero eos et accusamus et iusto odio dignissimos...
         </p>

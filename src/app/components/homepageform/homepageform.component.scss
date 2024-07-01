@@ -58,7 +58,7 @@ body {
 }
 :root {
     --blue: #007bff;
-    --indigo: #6610f2;
+    --indigo: #201b28;
     --purple: #6f42c1;
     --pink: #e83e8c;
     --red: #dc3545;
@@ -405,7 +405,7 @@ padding-left: 10px;
 }
 
 .image-header-product-detail {
-    border-radius: 10px;
+    border-tabradius: 10px;
     max-height: 300px;
 }
 
@@ -446,6 +446,38 @@ padding-left: 10px;
     cursor: pointer;
     color: #038395;
 }
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
 
 .avatar-product {
     cursor: pointer;
@@ -1181,6 +1213,9 @@ padding-left: 10px;
   .p-toast.p-toast-top-right, .p-toast.p-toast-top-left, .p-toast.p-toast-top-center {
     top: 100px;
   }
+  button{
+    margin: 0 auto;
+}
   
   h1, h2, h3, h4, h5, h6 {
     margin: 1.5rem 0 1rem 0;

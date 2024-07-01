@@ -2,7 +2,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ProductListDemo } from './productlistdemo';
+// import { ProductListDemo } from './productlistdemo';
 // import { Footer } from './demo/footer';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
@@ -50,11 +50,16 @@ ref: DynamicDialogRef | undefined;
       this.apiService.getData(apiURL).subscribe((res: any) => {
         this.data = res.Data;
         console.log(this.data);
+        console.log(this.data.result_list);
+        console.log(this.data.sample_list);
+        
     });
     }
+
+
+
 
  
 }
 }
-
 
