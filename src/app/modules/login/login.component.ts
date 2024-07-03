@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../../services/token-storage.service';
 import {UserComponent} from '@modules/main/header/user/user.component';
 import {ApiService} from './../../services/api.service';
 import {ElementRef, Input} from '@angular/core';
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router,
         private ApiService: ApiService,
+        private tokenStorageService: TokenStorageService,
         private renderer: Renderer2,
         private fb: FormBuilder
     ) {}
@@ -73,14 +75,20 @@ export class LoginComponent implements OnInit {
         this.ApiService.login(val).subscribe((data: any) => {
             console.log(data);
             if (data.StatusCode == 200) {
+                this.tokenStorageService.saveToken(data.Data);
                 // alert('Login Success');
                 this.router.navigateByUrl('homepage');
             } else {
                 console.log(this.formGroup.value);
             }
         });
+        
     }
 
+    logout(){
+        this.tokenStorageService.signOut();
+        this.router.navigateByUrl('login');
+    }
 
 //     @HostBinding('class') class = 'login-box';
 //     public loginForm: UntypedFormGroup;

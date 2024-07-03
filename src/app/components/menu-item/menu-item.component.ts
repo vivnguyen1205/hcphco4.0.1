@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {openCloseAnimation, rotateAnimation} from './menu-item.animations';
 import { MenuSidebarComponent } from '@modules/main/menu-sidebar/menu-sidebar.component';
+import { TokenStorageService } from '@services/token-storage.service';
 
 @Component({
     selector: 'app-menu-item',
@@ -18,7 +19,8 @@ export class MenuItemComponent implements OnInit {
     public isMainActive: boolean = false;
     public isOneOfChildrenActive: boolean = false;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router,
+        private tokenStorageService: TokenStorageService,) {}
 
     ngOnInit(): void {
         if (
@@ -48,6 +50,7 @@ export class MenuItemComponent implements OnInit {
         this.isMenuExtended = !this.isMenuExtended;
     }
 
+
     public calculateIsActive(url: string) {
         this.isMainActive = false;
         this.isOneOfChildrenActive = false;
@@ -64,5 +67,9 @@ export class MenuItemComponent implements OnInit {
         if (!this.isMainActive && !this.isOneOfChildrenActive) {
             this.isMenuExtended = false;
         }
+    }
+    logout(){
+        this.tokenStorageService.signOut();
+        this.router.navigate(["login"]);
     }
 }

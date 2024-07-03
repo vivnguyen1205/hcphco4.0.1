@@ -2,15 +2,15 @@ import {PaginatorModule} from 'primeng/paginator';
 import {openCloseAnimation} from './../menu-item/menu-item.animations';
 import {ApiService} from './../../services/api.service';
 import {Component, OnInit} from '@angular/core';
-// import { ButtonModule } from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgDatePickerModule} from 'ng-material-date-range-picker';
-// import { ColComponent, DateRangePickerComponent, RowComponent } from '@coreui/angular';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { InfoDemo } from './popup/infodemo';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
     DialogService,
     DynamicDialogModule,
@@ -20,7 +20,7 @@ import {PopupComponent} from './popup/popup.component';
 import {HomepageComponent} from '@pages/homepage/homepage.component';
 import {ViewChild} from '@angular/core';
 import {TableModule} from 'primeng/table';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {Table} from 'primeng/table';
 import {ImportsModule} from 'primeimports';
 import {SortEvent} from 'primeng/api';
@@ -28,7 +28,7 @@ import {ProductService} from '../../services/productservice';
 import {EventListenerObject} from 'rxjs/internal/observable/fromEvent';
 import {Data} from '@angular/router';
 import {DropdownModule} from 'primeng/dropdown';
-import { InfoDemo } from './popup/infodemo';
+import { FormBuilder } from '@angular/forms';
 
 interface Column {
     field: string;
@@ -39,30 +39,41 @@ interface Column {
     selector: 'app-homepageform',
     templateUrl: './homepageform.component.html',
     styleUrl: './homepageform.component.scss',
-    providers: [DialogService],
+    providers: [DialogService, DatePipe],
 })
 export class HomepageformComponent implements OnInit {
+
     @ViewChild('dt') dt: Table;
     isSorted: boolean = null;
     ref: DynamicDialogRef | undefined;
     constructor(
+        fb: FormBuilder,
         private apiService: ApiService,
-        public dialogService: DialogService
-    ) {}
-    hospitalId: number;
+        public dialogService: DialogService,
+        private datePipe: DatePipe
+    ) { }
+    
+    hospitalId: number = -1;
     CSFId: any;
     CSFIdEncrypt: any;
     CSFIdLink: string;
-
-    doctorId: number;
+    doctorId: number = -1;
     rangeDates: Date[] | undefined;
-    comboId: number;
+    comboId: number = -1;
+    testPackageId: number = -1;
     // testpackage
 
     // DATE RANGE PICKER
     date1: Date | undefined;
     date2: Date | undefined;
     date3: Date | undefined;
+    recievedDateFrom?: string;
+    recievedDateTo?: string;
+    drawDateFrom?: string;
+    drawDateTo?: string;
+    completeDateFrom?: string;
+    completeDateTo?: string;
+    
     onChangeRecieveDate(date1: any) {
         this.date1 = date1?.value;
         console.log(this.date1);
@@ -79,7 +90,6 @@ export class HomepageformComponent implements OnInit {
     showDialog() {
         this.visible = true;
     }
-
     // DEFINING VARIABLES AND CONTSTANTS
     private tokenKey: string =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJVc2VybmFtZSI6ImRvY3RvcjIiLCJUeXBlIjoiUGFydG5lciIsIkZ1bGxOYW1lIjoiZG9jdG9yIDIiLCJFbWFpbCI6IjJAZ21haWwuY29tIiwiUGhvbmUiOiIwIiwiSXNBZ3JlZW1lbnQiOiJUcnVlIiwiSXNMb3lhbHR5UHJvZ3JhbSI6IlRydWUiLCJMaXN0SG9zcGl0YWwiOiJbe1wiSWRcIjo0NzczLFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDA3NDhcIixcIk5hbWVcIjpcIkJWIFBTIE1la29uZ1wifSx7XCJJZFwiOjQ5MjUsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDA3MVwiLFwiTmFtZVwiOlwiUEsgQlMgVHLhuqduIFRo4buLIFPGoW4gVHLDoFwifSx7XCJJZFwiOjQ5MzQsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDM2NFwiLFwiTmFtZVwiOlwiUEsgQlMgVHLGsMahbmcgTmfhu41jIFRo4bqjb1wifSx7XCJJZFwiOjQ5ODMsXCJUeXBlXCI6XCJvdGhlclwiLFwiQ29kZVwiOlwiR1MwMDczNFwiLFwiTmFtZVwiOlwiVklOQ0lCSU9cIn0se1wiSWRcIjo1MTQxLFwiVHlwZVwiOlwicGtcIixcIkNvZGVcIjpcIkdTMDA0MTNcIixcIk5hbWVcIjpcIlBLIFRoYW5oIEjDom5cIn0se1wiSWRcIjo2ODU5LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIxMDlcIixcIk5hbWVcIjpcIlBYTiBZIEtob2EgNDhcIn0se1wiSWRcIjo2OTg3LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIyMzdcIixcIk5hbWVcIjpcIlBLIEJTIMSQb8OgbiBUaOG7iyBLaW0gRHVuZ1wifV0iLCJleHAiOjE3MjA0MDQyMjQsImlzcyI6ImhjcC1nZW5lc29sdXRpb24iLCJhdWQiOiJoY3AtZ2VuZXNvbHV0aW9uIn0.FbK_FtaGhfuux8_84cIgs0v2O89wfOnXvWEDKmHTGMg';
@@ -107,15 +117,13 @@ export class HomepageformComponent implements OnInit {
     ngOnInit(): void {
         this.getHospital();
         this.getCombo();
-        this.getTestPackage();
+        this.getTestPackage(this.testPackageId);
         this.onSearch()
-        // this.InitialValue = [...this.data];
-
-        // this.getCSFId();
-        // this.getDoctor();
-        // this.getCombo();
     }
-    // selected: {startDate: Dayjs, endDate: Dayjs};
+    range = new FormGroup({
+        start: new FormControl(),
+        end: new FormControl()
+      });
     getHospital() {
         this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
             this.HospitalList = data.Data;
@@ -123,6 +131,7 @@ export class HomepageformComponent implements OnInit {
             console.log(this.HospitalList);
         });
     }
+    
     getCombo() {
         this.apiService.getData(this.comboApi).subscribe((data: any) => {
             this.ComboList = data.Data;
@@ -142,10 +151,10 @@ export class HomepageformComponent implements OnInit {
             console.log(this.DoctorList);
         });
     }
-    getTestPackage() {
+    getTestPackage(testPackageId: any) {
         this.apiService.getData(this.testPackageApi).subscribe((data: any) => {
             this.testPackageList = data.Data;
-
+            this.testPackageId = testPackageId?.value;
             console.log(this.testPackageList);
         });
     }
@@ -188,25 +197,31 @@ export class HomepageformComponent implements OnInit {
             return event.order * result;
         });
     }
+    formName : string = null;
+
+        form = new FormGroup({
+            first: new FormControl('Nancy', Validators.minLength(2)),
+            last: new FormControl('Drew'),
+          });
+        get first(): any { return this.form.get('first'); }
+  get last(): any { return this.form.get('last'); }
+        clearInputMethod1() { this.first.reset(); this.last.reset(); }
 
     onSearch() {
-        const labDataApi =
-            'https://hcp-api-stg.genesolutions.vn/api/HCP/GetLabByUser?id_hospital=' +
-            this.hospitalId +
-            '&id_doctor=' +
-            this.doctorId +
-            '&id_combo=' +
-            this.comboId +
-            '&id_service_code=' +
-            '&StartDate_Collect=' +
-            // this.date1
-            '&EndDate_Collect=' +
-            // this.date2
-            '&StartDate_Receive=' +
-            // this.date3
-            '&EndDate_Receive=&StartDate_Complete_Lab=&EndDate_Complete_Lab=&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20';
-        this.apiService.getData(labDataApi).subscribe((data: any) => {
-            // debugger
+   
+        this.recievedDateFrom = this.date1 != null || this.date1 != undefined ? this.datePipe.transform(this.date1[0],"yyyy-MM-dd") : '';
+        this.recievedDateTo = this.date1 != null || this.date1 != undefined ? this.datePipe.transform(this.date1[1],"yyyy-MM-dd") : '';
+        this.drawDateFrom = this.date2 != null || this.date2 != undefined ? this.datePipe.transform(this.date2[0],"yyyy-MM-dd") : '';
+        this.drawDateTo = this.date2 != null || this.date2 != undefined ? this.datePipe.transform(this.date2[1],"yyyy-MM-dd") : '';
+        this.completeDateFrom = this.date3 != null || this.date3 != undefined ? this.datePipe.transform(this.date3[0],"yyyy-MM-dd") : '';
+        this.completeDateTo = this.date3 != null || this.date3 != undefined ? this.datePipe.transform(this.date3[1],"yyyy-MM-dd") : '';
+        
+        console.log(this.recievedDateFrom, this.recievedDateTo);
+        console.log(this.drawDateFrom, this.drawDateTo);
+        console.log(this.completeDateFrom, this.completeDateTo);
+        const apiUrl = `https://hcp-api-stg.genesolutions.vn/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${this.testPackageId}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
+        
+        this.apiService.getData(apiUrl).subscribe((data: any) => {
             this.dataList = data.Data.ListData;
             // console.log(this.dataList);
         });
@@ -244,10 +259,13 @@ export class HomepageformComponent implements OnInit {
           let summary_and_detail;
           this.onSearch();
       });
+        
 
   
         // const CSFIdLink =
         //     'https://hcp-stg.genesolutions.vn/details?id=' + CSFId;
         // window.open(CSFIdLink, '_blank').focus();
     }
-}
+    
+    }
+
