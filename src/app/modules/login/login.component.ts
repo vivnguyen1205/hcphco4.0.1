@@ -2,6 +2,7 @@ import { TokenStorageService } from './../../services/token-storage.service';
 import {UserComponent} from '@modules/main/header/user/user.component';
 import {ApiService} from './../../services/api.service';
 import {ElementRef, Input} from '@angular/core';
+import { FloatLabelModule } from "primeng/floatlabel"  
 import {
     Component,
     OnInit,
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit {
             password: new FormControl('')
         });
     }
-    
+    isActive = true;
     onLogin() {
     
         const loginApi: string =

@@ -79,8 +79,14 @@ import { Table } from 'primeng/table';
 import { ImportsModule } from 'primeimports';
 import { DetailsComponent } from './components/details/details.component';
 import { PopupComponent } from '@components/homepageform/popup/popup.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 // import { PopupComponent } from './components/homepageform/popup/popup.component';
 registerLocaleData(localeEn, 'en-EN');
+
+export function tokenGetter() {
+    return localStorage.getItem('auth-token');
+}
 
 @NgModule({
     declarations: [
@@ -127,8 +133,13 @@ registerLocaleData(localeEn, 'en-EN');
     ],
     bootstrap: [AppComponent],
     imports: [
-        
-
+        JwtModule.forRoot({
+            config: {
+              tokenGetter: tokenGetter,
+              allowedDomains: [environment.BaseApi],
+              disallowedRoutes: [],
+            },
+          }),
         ImportsModule,
         CalendarModule,
         TableComponent,
@@ -163,6 +174,7 @@ registerLocaleData(localeEn, 'en-EN');
 		InputTextModule
     ],
     providers: [
+        {provide: 'Base_url', useValue: environment.BaseApi},
         HomepageformComponent,
         provideHttpClient(withInterceptorsFromDi()),
         {
@@ -170,6 +182,8 @@ registerLocaleData(localeEn, 'en-EN');
             useClass: TokenInterceptor,
             multi: true
         },
+        JwtHelperService,
+        provideAnimationsAsync(),
     ]
 })
 export class AppModule { }

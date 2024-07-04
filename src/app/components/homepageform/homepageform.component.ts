@@ -29,6 +29,8 @@ import {EventListenerObject} from 'rxjs/internal/observable/fromEvent';
 import {Data} from '@angular/router';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormBuilder } from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { environment } from 'environments/environment';
 
 interface Column {
     field: string;
@@ -42,7 +44,7 @@ interface Column {
     providers: [DialogService, DatePipe],
 })
 export class HomepageformComponent implements OnInit {
-
+    private readonly Base_URL = environment.BaseApi;
     @ViewChild('dt') dt: Table;
     isSorted: boolean = null;
     ref: DynamicDialogRef | undefined;
@@ -50,6 +52,7 @@ export class HomepageformComponent implements OnInit {
         fb: FormBuilder,
         private apiService: ApiService,
         public dialogService: DialogService,
+
         private datePipe: DatePipe
     ) { }
     
@@ -94,10 +97,8 @@ export class HomepageformComponent implements OnInit {
     private tokenKey: string =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJVc2VybmFtZSI6ImRvY3RvcjIiLCJUeXBlIjoiUGFydG5lciIsIkZ1bGxOYW1lIjoiZG9jdG9yIDIiLCJFbWFpbCI6IjJAZ21haWwuY29tIiwiUGhvbmUiOiIwIiwiSXNBZ3JlZW1lbnQiOiJUcnVlIiwiSXNMb3lhbHR5UHJvZ3JhbSI6IlRydWUiLCJMaXN0SG9zcGl0YWwiOiJbe1wiSWRcIjo0NzczLFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDA3NDhcIixcIk5hbWVcIjpcIkJWIFBTIE1la29uZ1wifSx7XCJJZFwiOjQ5MjUsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDA3MVwiLFwiTmFtZVwiOlwiUEsgQlMgVHLhuqduIFRo4buLIFPGoW4gVHLDoFwifSx7XCJJZFwiOjQ5MzQsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDM2NFwiLFwiTmFtZVwiOlwiUEsgQlMgVHLGsMahbmcgTmfhu41jIFRo4bqjb1wifSx7XCJJZFwiOjQ5ODMsXCJUeXBlXCI6XCJvdGhlclwiLFwiQ29kZVwiOlwiR1MwMDczNFwiLFwiTmFtZVwiOlwiVklOQ0lCSU9cIn0se1wiSWRcIjo1MTQxLFwiVHlwZVwiOlwicGtcIixcIkNvZGVcIjpcIkdTMDA0MTNcIixcIk5hbWVcIjpcIlBLIFRoYW5oIEjDom5cIn0se1wiSWRcIjo2ODU5LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIxMDlcIixcIk5hbWVcIjpcIlBYTiBZIEtob2EgNDhcIn0se1wiSWRcIjo2OTg3LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIyMzdcIixcIk5hbWVcIjpcIlBLIEJTIMSQb8OgbiBUaOG7iyBLaW0gRHVuZ1wifV0iLCJleHAiOjE3MjA0MDQyMjQsImlzcyI6ImhjcC1nZW5lc29sdXRpb24iLCJhdWQiOiJoY3AtZ2VuZXNvbHV0aW9uIn0.FbK_FtaGhfuux8_84cIgs0v2O89wfOnXvWEDKmHTGMg';
     // HOSPITAL API
-    hospitalApi: string =
-        'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryHospitals';
-    testPackageApi: string =
-        'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryService';
+    hospitalApi: string = this.Base_URL + '/api/HCP/GetCategoryHospitals';
+    testPackageApi: string = this.Base_URL + '/api/HCP/GetCategoryService';
     testPackageList: any[] = [];
     testPackage: any[];
     hospital: any[];
@@ -106,8 +107,7 @@ export class HomepageformComponent implements OnInit {
     doctor: any[];
     DoctorList: any[] = [];
     // COMBO API
-    comboApi: string =
-        'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryCombo';
+    comboApi: string = this.Base_URL + '/api/HCP/GetCategoryCombo';
     ComboList: any[] = [];
     dataList: any[] = [];
     data: any[];
@@ -141,8 +141,7 @@ export class HomepageformComponent implements OnInit {
 
     onChangeHospital(hospitalId: any) {
         // gets the doctor list changes on hospital change
-        const doctorApi =
-            'https://hcp-api-stg.genesolutions.vn/api/HCP/GetCategoryDoctor?hospitalId=' +
+        const doctorApi = this.Base_URL + '/api/HCP/GetCategoryDoctor?hospitalId=' +
             hospitalId?.value;
         this.apiService.getData(doctorApi).subscribe((data: any) => {
             this.DoctorList = data.Data;
@@ -219,7 +218,7 @@ export class HomepageformComponent implements OnInit {
         console.log(this.recievedDateFrom, this.recievedDateTo);
         console.log(this.drawDateFrom, this.drawDateTo);
         console.log(this.completeDateFrom, this.completeDateTo);
-        const apiUrl = `https://hcp-api-stg.genesolutions.vn/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${this.testPackageId}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
+        const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
         
         this.apiService.getData(apiUrl).subscribe((data: any) => {
             this.dataList = data.Data.ListData;

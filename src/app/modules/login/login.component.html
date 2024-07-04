@@ -1,5 +1,5 @@
 <body class="login-page" style="min-height: 439.32px;">
-    <div class="login-box">
+    <div class="login-box"    >
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="/" class="h1">
@@ -8,11 +8,11 @@
                         <img src="../../../assets/img/GSlogo2.png">
                     </span>
                     <br>
-                    <b>HCP-HCO APP</b>
+                    <h1 class="title">HCP-HCO APP</h1>
                 </a>
             </div>
             <!-- login component -->
-            <div class="card-body">
+            <div class="card-body" [class.mat-elevation-z2]="isActive">
                 <p class="login-box-msg">Login to the system</p>
                 <form [formGroup]="formGroup">
                     <!-- username -->
@@ -24,12 +24,39 @@
 
                                 </div>
                             </div>
+                  
+                  
+                            <!-- <p-floatLabel  style="width: 25rem; align-items: center;" >
+                                
 
+                            <input 
+                                
+                            autocomplete="off" 
+                            class="form-control input-username text-box single-line" 
+                            data-val="true"
+                            data-val-length="The password is at least 6 characters" 
+                            data-val-length-max="100"
+                            data-val-length-min="6" 
+                            data-val-required="Please enter password" 
+                            id="username"
+                            name="username" 
+                            type="username" 
+                            value="">
+                                <label for="username">Username</label>
+                            </p-floatLabel>
+                         -->
+                     
+                            <!-- <input autocomplete="off" 
+                                class="form-control input-username text-box single-line" data-val="true"
+                                data-val-length="The password is at least 6 characters" data-val-length-max="100"
+                                data-val-length-min="6" data-val-required="Please enter password" id="username"
+                                name="username" type="username" value=""> -->
                             <input placeholder="Username" autocomplete="off" formControlName="username"
                                 class="form-control input-username text-box single-line" data-val="true"
                                 data-val-length="The password is at least 6 characters" data-val-length-max="100"
                                 data-val-length-min="6" data-val-required="Please enter password" id="username"
                                 name="username" type="username" value="">
+                  
                             <div
                                 *ngIf="formGroup.get('username').hasError('required') && formGroup.get('username').touched">
                                 username is required
@@ -90,14 +117,17 @@ placeholder="Enter your username" />
                                 <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a> -->
                         </div>
                     </div>
+                   
+                 
+                          
                     <!-- login button  -->
-                    <a class="btn btn-primary btn-block btn-login" (click)="onLogin()">Login</a>
-                    <p class="mb-1 mt-23">
-
-                        <a onclick="SendOTP()">Reset Password</a>
-                    </p>
+                    
+                    <a class="btn btn-login " (click)="onLogin()">Login</a>
+                    <!-- <p-button class="btn-grad" label="Submit" /> -->
+                        
+              
+            
                     <p class="mb-0">
-                        <a href="/privacy-policy" target="_blank">Privacy policy</a>
                     </p>
                 </form>
 

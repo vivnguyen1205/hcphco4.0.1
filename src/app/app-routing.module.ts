@@ -24,7 +24,7 @@ const routes: Routes = [
     {
         path: '',
         component: MainComponent,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         // canActivateChild: [AuthGuard],
         children: [
             {
@@ -44,7 +44,7 @@ const routes: Routes = [
                 component: BlankComponent
             },
             {
-                path: '',
+                path: 'Logout',
                 component: DashboardComponent
             },
         ]
