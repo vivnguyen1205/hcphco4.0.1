@@ -6,14 +6,7 @@
     background-position: center center;
     background-size: cover;
 }
-.centerbutton{
-    margin: 0 auto;
-    float: left;
-    height:34px;
-    margin-right:10px;
-    float: left;
 
-}
 .nav{
     margin-top:167px;
     width:1024px;
@@ -32,20 +25,26 @@
     float: left;
 }
          
+
 .btn-login{
-    align-items: center;
+    position: absolute; /* or relative */
+  left: 50%;
+  top: 200%;
+ transform: translate(-50%, -50%);
+
     background-image: linear-gradient(to right, #348F50 0%, #56B4D3  51%, #348F50  100%);
-    margin: 10px;
-    padding: 15px 45px;
+    // margin: 10px;
+    padding: 10px 30px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform:none;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
     box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
+    border-radius: 20px;
     display: block;
     width: 50%;
+
   }
 
   .btn-login:hover {
@@ -80,6 +79,7 @@ img {
 
 .login-box, .register-box .username{
     width: 500px;
+
 }
 
 user agent stylesheet
@@ -109,6 +109,7 @@ html {
 .login-page .card {
     background-color: rgb(255 255 255 / 70%);
     border-radius: 1rem;
+    height: 400px;
 }#loading {
     display: none;
     width: 100%;

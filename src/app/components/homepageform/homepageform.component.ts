@@ -245,7 +245,8 @@ export class HomepageformComponent implements OnInit {
               CSFId:CSFId
                 // totalProducts: this.products ? this.products.length : 0
             },
-            width: '50vw',
+            header: 'Lab Details',
+            width: '60vw',
             contentStyle: { overflow: 'auto' },
             breakpoints: {
                 '960px': '75vw',

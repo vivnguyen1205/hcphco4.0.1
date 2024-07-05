@@ -7,13 +7,13 @@
                 <div class="row">
 
                     <p-floatLabel class="col-md-3 col-sm-3 col-12" style="padding:0.75rem">
-                        <input pInputText id="username" [(ngModel)]="doctor" />
+                        <input pInputText id="username" [(ngModel)]="doctor" autocomplete="off"/>
                         <label for="username" class="text-color-gs">Lab Code : </label>
                     </p-floatLabel>
 
 
                     <p-floatLabel class="col-md-3 col-sm-3 col-12" style="padding:0.75rem">
-                        <input pInputText id="username" [(ngModel)]="doctor" />
+                        <input pInputText id="username" [(ngModel)]="doctor" autocomplete="off"/>
                         <label for="username" class="text-color-gs">Customer name:</label>
                     </p-floatLabel>
 
@@ -44,7 +44,7 @@
                             inputId="icondisplay" />
                         <label for="username" class="text-color-gs">Sample recieved date at GS:</label>
                     </p-floatLabel>
-
+                   
                     <!-- <button (click)="clearInputMethod1()">Clear Input Method 1</button> -->
                     <p-floatLabel class="col-md-3 col-sm-3 col-12" style="padding:0.75rem">
                         <p-calendar [(ngModel)]="date2" selectionMode="range" [iconDisplay]="'input'" [showIcon]="true"
@@ -138,12 +138,15 @@
                         <div class="text-center text-sm-right">
                             <!-- <p-button label="Submit" (click)="onSearch()"/> -->
                             <!-- <button pButton pRipple label="Submit" class="p-button-success">
-                            </button>
-                            <p-button label="Submit" /> -->
-                            <p-button (click)="onSearch()"  label="Submit">
-                                <!-- <i class="fa fa-search"></i> Search -->
+                                z
+                            </button> -->
+                            <button (click)="onSearch()"  class=" btn bg-gradient-primary" style="margin-right: 20px;">
+                                <i class="fa fa-search"></i> Search
 
-                            </p-button>
+                            </button>
+                            <!-- <p-button (click)="onSearch()"  label="Submit"> -->
+                           
+                            <!-- </p-button> -->
                             <!-- <p-button label="Secondary" [rounded]="true" severity="secondary" /> -->
                             <button onclick="Search('export')" class="btn bg-gradient-primary">
                                 <i class="fa fa-file-excel"></i> Export excel

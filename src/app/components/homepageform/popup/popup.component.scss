@@ -6,9 +6,17 @@ html {
 }
 .p-datatable{
     size: auto;
+.header{
+    color:blueviolet;
 
 }
-
+.accTabHeader{
+    color: #038395 !important;
+}
+}
+.header{
+    color:blueviolet;
+}
 body {
     font-family: var(--font-family);
     font-weight: normal;

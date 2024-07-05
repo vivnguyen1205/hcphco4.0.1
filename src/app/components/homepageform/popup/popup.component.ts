@@ -1,9 +1,13 @@
+import { HomepageformComponent } from '@components/homepageform/homepageform.component';
 // import { Component } from '@angular/core';
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { allIcons } from 'ngx-bootstrap-icons';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 // import { ProductListDemo } from './productlistdemo';
 // import { Footer } from './demo/footer';
+import { PrimeIcons } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
@@ -27,16 +31,35 @@ import {SortEvent} from 'primeng/api';
 import {EventListenerObject} from 'rxjs/internal/observable/fromEvent';
 import {Data} from '@angular/router';
 import {DropdownModule} from 'primeng/dropdown';
+import {ElementRef, HostBinding, Input, OnChanges} from '@angular/core';
+import {
+  animate, style, transition, trigger
+} from "@angular/animations";
 @Component({
+  animations: [
+    trigger('grow', [
+      transition('void <=> *', []),
+      transition('* <=> *', [
+        style({height: '{{startHeight}}px', opacity: 0}),
+        animate('.5s ease'),
+      ], {params: {startHeight: 0}})
+    ])
+  ],
   selector: 'app-popup',
   templateUrl: './popup.component.html', 
   styleUrl: './popup.component.scss',
 })
-export class PopupComponent implements OnInit {
+export class PopupComponent implements OnInit, OnChanges{
+  @Input()
+  trigger: string;
+
+  startHeight: number;
   
   constructor(
+    private element: ElementRef,
     private dialogConfig: DynamicDialogConfig,
     private apiService: ApiService,
+    private HomepageformComponent: HomepageformComponent,
 ) {}
 ref: DynamicDialogRef | undefined;
   detailId: string;
@@ -44,6 +67,16 @@ ref: DynamicDialogRef | undefined;
   ngOnInit(): void {
     this.loadDetailData(this.dialogConfig.data?.CSFId);
   }
+  setStartHeight(){
+    this.startHeight = this.element.nativeElement.clientHeight;
+  }
+  ngOnChanges(){
+    this.setStartHeight();
+  }
+  // changeContent(){
+  //   this.content = this.longContent !== this.content ? this.longContent : this.shortContent;
+  // }
+  
   loadDetailData(id:string) {
     if(id) {
       const apiURL = `https://hcp-api-stg.genesolutions.vn/api/HCP/LabStatusDetailv2?idEncrypt=${id}&labCodeEncrypt=`
@@ -54,8 +87,8 @@ ref: DynamicDialogRef | undefined;
         console.log(this.data.sample_list);
         
     });
+    
     }
-
 
 
 

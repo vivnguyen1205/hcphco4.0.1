@@ -8,12 +8,13 @@
                         <img src="../../../assets/img/GSlogo2.png">
                     </span>
                     <br>
+               
                     <h1 class="title">HCP-HCO APP</h1>
                 </a>
             </div>
             <!-- login component -->
             <div class="card-body" [class.mat-elevation-z2]="isActive">
-                <p class="login-box-msg">Login to the system</p>
+                <p class="login-box-msg" style="font-weight: bold;">Login to the system</p>
                 <form [formGroup]="formGroup">
                     <!-- username -->
                     <div class="mb-3">
@@ -69,8 +70,6 @@
 
 
 
-
-
                     <!-- \
   
 
@@ -112,17 +111,20 @@ placeholder="Enter your username" />
                                 data-val-required="Please enter password" data-val-length-min="6"
                                 data-val-length="The password is at least 6 characters" formControlName="password"
                                 data-val="true" data-val-length-max="100" value="">
-                                
+                                <br>
+                             
+                                <a class="btn-login " (click)="onLogin()">Login</a>
                             <!-- <a>
                                 <i class="fa fa-eye-slash show-hide-password" aria-hidden="true" value="Show"></i></a> -->
                         </div>
+                        
                     </div>
                    
                  
                           
                     <!-- login button  -->
                     
-                    <a class="btn btn-login " (click)="onLogin()">Login</a>
+                   
                     <!-- <p-button class="btn-grad" label="Submit" /> -->
                         
               
