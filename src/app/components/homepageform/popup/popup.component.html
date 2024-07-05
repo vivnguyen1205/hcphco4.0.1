@@ -2,8 +2,8 @@
 <p-tabView >
 
 
-    <p-tabPanel header="General Information " style="color: #038395;" [leftIcon]="">
-        <p-accordion [multiple]="true" [activeIndex]="[0]">
+    <p-tabPanel header="General Information  " >
+        <p-accordion [multiple]="true" [activeIndex]="[0]" >
             <!-- <i class="pi pi-user" style="font-size: 2.5rem"></i> -->
             <p-accordionTab style="color: #038395;" >
                 <ng-template pTemplate="header">
@@ -72,18 +72,44 @@
 
                 </p>
             </p-accordionTab>
-            <!-- <p-accordionTab header="Header III" class="text-color-gs">
+            <p-accordionTab >
+                <ng-template pTemplate="header">
+                    <span class="flex align-items-center gap-2 w-full">
+                        <span class="bi bi-geo-alt" style="font-size: 1.5rem"></span>
+              
+                        <span class="font-bold white-space-nowrap" style="color: #038395;">
+                            Lab Information
+                        </span>
+             
+                    </span>
+                </ng-template>
                 <p>
-                    At vero eos et accusamus et iusto odio dignissimos...
+                    <b>Customer Name :</b> {{data.hospital_name }} <br>
+                    <b>Referred Doctor:</b> {{data.doctor_name}} <br> 
+                    <b>Sale Rep :</b> {{data.sale_rep_name}} <br> 
+                   <b> Date of Birth: </b>{{data.customer_date_of_birth}}<br>
+                   <b> Sale Rep Email: </b> {{data.sale_rep_email}}
+                   
+
                 </p>
-            </p-accordionTab> -->
+            </p-accordionTab>
         </p-accordion>
         <!-- <p>
             Lorem ipsum dolor sit amet...
         </p> -->
     </p-tabPanel>
     <p-tabPanel header="Sample list" class="header">
-        <p-table [value]="data" class="p-datatable-sm">
+        <p-card header="Sample List">
+            <p>
+                <!-- <b>Test Package :</b> {{data.result.sample_list.service_code_name }} <br> -->
+                <b>Sample Type:</b> {{data.doctor_name}} <br> 
+                <b>Status :</b> {{data.sale_rep_name}} <br> 
+              
+               
+
+            </p>
+        </p-card>
+        <!-- <p-table [value]="data" class="p-datatable-sm">
             <ng-template pTemplate="header">
                 <tr>
                     <th>Test package</th>
@@ -100,7 +126,7 @@
                     <td>{{ data.id_sale_team }}</td>
                 </tr>
             </ng-template>
-        </p-table>
+        </p-table> -->
     </p-tabPanel>
     <p-tabPanel header="Results list">
         <p>
