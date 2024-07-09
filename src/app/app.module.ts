@@ -67,7 +67,7 @@ import { PostComponent } from './pages/profile/post/post.component';
 import { InfoBoxComponent } from './components/info-box/info-box.component';
 import { SmallBoxComponent } from './components/small-box/small-box.component';
 import { ContentHeaderComponent } from './components/content-header/content-header.component';
-import { LoadingComponent } from './components/loading/loading.component';
+// import { LoadingComponent } from './components/loading/loading.component';
 import { OverlayLoadingComponent } from './components/overlay-loading/overlay-loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -120,7 +120,7 @@ export function tokenGetter() {
         InfoBoxComponent,
         SmallBoxComponent,
         ContentHeaderComponent,
-        LoadingComponent,
+        // LoadingComponent,
         OverlayLoadingComponent,
         HomepageComponent,
         HomepageformComponent,
@@ -140,6 +140,7 @@ export function tokenGetter() {
               disallowedRoutes: [],
             },
           }),
+        //   LoadingComponent,
         ImportsModule,
         CalendarModule,
         TableComponent,

@@ -9,7 +9,9 @@ import {NgDatePickerModule} from 'ng-material-date-range-picker';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { LoadingComponent } from '@components/loading/loading.component';
 import { InfoDemo } from './popup/infodemo';
+// import { LoadingComponent } from '@components/loading/loading.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {
     DialogService,
@@ -44,17 +46,23 @@ interface Column {
     providers: [DialogService, DatePipe],
 })
 export class HomepageformComponent implements OnInit {
+    isLoading = true;
     private readonly Base_URL = environment.BaseApi;
     @ViewChild('dt') dt: Table;
     isSorted: boolean = null;
     ref: DynamicDialogRef | undefined;
     constructor(
+        
         fb: FormBuilder,
         private apiService: ApiService,
         public dialogService: DialogService,
 
         private datePipe: DatePipe
-    ) { }
+    ) { 
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 3000);
+    }
     
     hospitalId: number = -1;
     CSFId: any;
@@ -154,7 +162,7 @@ export class HomepageformComponent implements OnInit {
         this.apiService.getData(this.testPackageApi).subscribe((data: any) => {
             this.testPackageList = data.Data;
             this.testPackageId = testPackageId?.value;
-            console.log(this.testPackageList);
+            console.log(this.testPackageId);
         });
     }
 
@@ -166,6 +174,7 @@ export class HomepageformComponent implements OnInit {
         this.comboId = comboId?.target?.value;
         // console.log(this.ComboList);
     }
+     initialValue: Data[];
 
     // SORTING FUNCTION
     customSort(event: SortEvent) {

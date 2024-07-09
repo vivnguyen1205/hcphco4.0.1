@@ -35,9 +35,9 @@ body,
   }
 
   @supports not (-webkit-touch-callout: none) {
-    .layout-fixed & .sidebar {
-      height: calc(100vh - (#{$main-header-height-inner} + #{$main-header-bottom-border-width}));
-    }
+    // .layout-fixed & .sidebar {
+    //   height: calc(100vh - (#{$main-header-height-inner} + #{$main-header-bottom-border-width}));
+    // }
     .layout-fixed.text-sm & .sidebar {
       height: calc(100vh - (#{$main-header-height-sm-inner} + #{$main-header-bottom-border-width}));
     }

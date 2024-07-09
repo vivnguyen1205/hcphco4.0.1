@@ -14,7 +14,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { AccordionModule } from 'primeng/accordion';
 import {ApiService} from '../../../services/api.service';
 import {PaginatorModule} from 'primeng/paginator';
-// import { ButtonModule } from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -48,6 +47,7 @@ import {
   selector: 'app-popup',
   templateUrl: './popup.component.html', 
   styleUrl: './popup.component.scss',
+  
 })
 export class PopupComponent implements OnInit, OnChanges{
   @Input()
@@ -67,12 +67,18 @@ ref: DynamicDialogRef | undefined;
   ngOnInit(): void {
     this.loadDetailData(this.dialogConfig.data?.CSFId);
   }
+  @HostBinding('@grow') get grow() {
+    return {value: this.trigger, params: {startHeight: this.startHeight}};
+  }
   setStartHeight(){
     this.startHeight = this.element.nativeElement.clientHeight;
   }
   ngOnChanges(){
     this.setStartHeight();
   }
+  
+  
+  
   // changeContent(){
   //   this.content = this.longContent !== this.content ? this.longContent : this.shortContent;
   // }

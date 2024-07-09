@@ -1,12 +1,31 @@
+
+
 // BACKGROUND IMAGE 
-.login-page, .register-page, .download-page {
-    background-color: transparent;
+// .login-page, .register-page, .download-page {
+//     background-color: transparent;
+//     background-image: url(../../../assets/img/bg.jpeg);
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: cover;
+// }
+.login-page, .register-page {
+     background-color: transparent;
     background-image: url(../../../assets/img/bg.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #e9ecef;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: -webkit-center;
 }
-
 .nav{
     margin-top:167px;
     width:1024px;
@@ -78,8 +97,7 @@ img {
 // login form styles
 
 .login-box, .register-box .username{
-    width: 500px;
-
+    width: 80%;
 }
 
 user agent stylesheet

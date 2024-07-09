@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router, Event} from '@angular/router';
 import {environment} from 'environments/environment';
 import {GoogleAnalyticsService} from 'ngx-google-analytics';
+import { LoadingComponent } from '@components/loading/loading.component';
+
 import { BreakpointObserver,Breakpoints, BreakpointState } from '@angular/cdk/layout';
 @Component({
     selector: 'app-root',
@@ -9,11 +11,17 @@ import { BreakpointObserver,Breakpoints, BreakpointState } from '@angular/cdk/la
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+    isLoading: boolean = true;
     constructor(
+        
         public responsive: BreakpointObserver,
         private router: Router,
         protected $gaService: GoogleAnalyticsService
     ) {
+        setTimeout(() => {
+            this.isLoading = false;
+            
+        }, 3000);
         this.router.events.subscribe((event: Event) => {
             if (
                 event instanceof NavigationEnd &&
