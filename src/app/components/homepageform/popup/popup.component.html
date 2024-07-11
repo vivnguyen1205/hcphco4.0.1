@@ -126,8 +126,7 @@
             </div>
         </div>
         <div class="card">
-            <p-table >
-
+            <p-table  >
                 <ng-template pTemplate="header" let-columns>
 
                     <tr>
@@ -201,8 +200,29 @@
                 </span>
             </div>
         </ng-template>
-        <p>
-            At vero eos et accusamus et iusto odio dignissimos...
-        </p>
+        <p-table  >
+            <ng-template pTemplate="header" style="border:3px"let-columns>
+
+                <tr>
+                    <th>File Name: </th>
+                    <th>     </th>
+                    
+
+                </tr>
+
+                <ng-container *ngFor="let item of data.result_list;let i = index">
+                    <tr>
+
+                        <td style="text-align: center;">{{ i + 1 }}</td>
+                        <td > {{data.customer_name}} {{data.test_code}} - {{ item?.file_name }}</td>
+                    
+
+                    </tr>
+                </ng-container>
+
+
+            </ng-template>
+
+        </p-table>
     </p-tabPanel>
 </p-tabView>

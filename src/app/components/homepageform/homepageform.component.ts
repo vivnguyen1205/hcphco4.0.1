@@ -3,7 +3,7 @@ import {openCloseAnimation} from './../menu-item/menu-item.animations';
 import {ApiService} from './../../services/api.service';
 import {Component, OnInit} from '@angular/core';
 import {CalendarModule} from 'primeng/calendar';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgDatePickerModule} from 'ng-material-date-range-picker';
 import {DialogModule} from 'primeng/dialog';
@@ -13,7 +13,9 @@ import { LoadingComponent } from '@components/loading/loading.component';
 import { InfoDemo } from './popup/infodemo';
 // import { LoadingComponent } from '@components/loading/loading.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormResetEvent } from '@angular/forms';
 import {
+
     DialogService,
     DynamicDialogModule,
     DynamicDialogRef
@@ -33,6 +35,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormBuilder } from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { environment } from 'environments/environment';
+import { Form } from '@profabric/angular-components';
 
 interface Column {
     field: string;
@@ -63,6 +66,7 @@ export class HomepageformComponent implements OnInit {
             this.isLoading = false;
         }, 3000);
     }
+    // reset(formState?: TValue | FormControlState<TValue>, options?: { onlySelf?: boolean; emitEvent?: boolean; }): void
     
     hospitalId: number = -1;
     CSFId: any;
@@ -84,6 +88,7 @@ export class HomepageformComponent implements OnInit {
     drawDateTo?: string;
     completeDateFrom?: string;
     completeDateTo?: string;
+    NgForm: Form
     
     onChangeRecieveDate(date1: any) {
         this.date1 = date1?.value;
@@ -101,6 +106,10 @@ export class HomepageformComponent implements OnInit {
     showDialog() {
         this.visible = true;
     }
+    onReset(form: NgForm){
+        form.reset();
+
+    }
     // DEFINING VARIABLES AND CONTSTANTS
     private tokenKey: string =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJVc2VybmFtZSI6ImRvY3RvcjIiLCJUeXBlIjoiUGFydG5lciIsIkZ1bGxOYW1lIjoiZG9jdG9yIDIiLCJFbWFpbCI6IjJAZ21haWwuY29tIiwiUGhvbmUiOiIwIiwiSXNBZ3JlZW1lbnQiOiJUcnVlIiwiSXNMb3lhbHR5UHJvZ3JhbSI6IlRydWUiLCJMaXN0SG9zcGl0YWwiOiJbe1wiSWRcIjo0NzczLFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDA3NDhcIixcIk5hbWVcIjpcIkJWIFBTIE1la29uZ1wifSx7XCJJZFwiOjQ5MjUsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDA3MVwiLFwiTmFtZVwiOlwiUEsgQlMgVHLhuqduIFRo4buLIFPGoW4gVHLDoFwifSx7XCJJZFwiOjQ5MzQsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDM2NFwiLFwiTmFtZVwiOlwiUEsgQlMgVHLGsMahbmcgTmfhu41jIFRo4bqjb1wifSx7XCJJZFwiOjQ5ODMsXCJUeXBlXCI6XCJvdGhlclwiLFwiQ29kZVwiOlwiR1MwMDczNFwiLFwiTmFtZVwiOlwiVklOQ0lCSU9cIn0se1wiSWRcIjo1MTQxLFwiVHlwZVwiOlwicGtcIixcIkNvZGVcIjpcIkdTMDA0MTNcIixcIk5hbWVcIjpcIlBLIFRoYW5oIEjDom5cIn0se1wiSWRcIjo2ODU5LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIxMDlcIixcIk5hbWVcIjpcIlBYTiBZIEtob2EgNDhcIn0se1wiSWRcIjo2OTg3LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIyMzdcIixcIk5hbWVcIjpcIlBLIEJTIMSQb8OgbiBUaOG7iyBLaW0gRHVuZ1wifV0iLCJleHAiOjE3MjA0MDQyMjQsImlzcyI6ImhjcC1nZW5lc29sdXRpb24iLCJhdWQiOiJoY3AtZ2VuZXNvbHV0aW9uIn0.FbK_FtaGhfuux8_84cIgs0v2O89wfOnXvWEDKmHTGMg';
@@ -113,31 +122,38 @@ export class HomepageformComponent implements OnInit {
     HospitalList: any[] = [];
     // DOCTOR API
     doctor: any[];
+    labCode: any[];
+    customerName: any[];
     DoctorList: any[] = [];
     // COMBO API
     comboApi: string = this.Base_URL + '/api/HCP/GetCategoryCombo';
     ComboList: any[] = [];
     dataList: any[] = [];
     data: any[];
+    packageArr: any[] = [];
 
     cols!: Column[];
 
     ngOnInit(): void {
         this.getHospital();
         this.getCombo();
-        this.getTestPackage(this.testPackageId);
+        this.getTestPackage();
         this.onSearch()
     }
     range = new FormGroup({
         start: new FormControl(),
         end: new FormControl()
       });
+    
     getHospital() {
         this.apiService.getData(this.hospitalApi).subscribe((data: any) => {
             this.HospitalList = data.Data;
 
             console.log(this.HospitalList);
         });
+    }
+    resetForm(){
+
     }
     
     getCombo() {
@@ -158,10 +174,10 @@ export class HomepageformComponent implements OnInit {
             console.log(this.DoctorList);
         });
     }
-    getTestPackage(testPackageId: any) {
+    getTestPackage() {
         this.apiService.getData(this.testPackageApi).subscribe((data: any) => {
             this.testPackageList = data.Data;
-            this.testPackageId = testPackageId?.value;
+            // this.testPackageId = testPackageId?.value;
             console.log(this.testPackageId);
         });
     }
@@ -174,6 +190,14 @@ export class HomepageformComponent implements OnInit {
         this.comboId = comboId?.target?.value;
         // console.log(this.ComboList);
     }
+
+    onChangeTestPackage(event: any) {
+        console.log(event);
+        this.packageArr = event?.value;
+        // console.log(this.testPackageId);
+        // this.onSearch();
+    }
+
      initialValue: Data[];
 
     // SORTING FUNCTION
@@ -227,7 +251,8 @@ export class HomepageformComponent implements OnInit {
         console.log(this.recievedDateFrom, this.recievedDateTo);
         console.log(this.drawDateFrom, this.drawDateTo);
         console.log(this.completeDateFrom, this.completeDateTo);
-        const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=&lab_code=&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
+        const testPackageIds = this.packageArr.length > 0 ?  this.packageArr.join(',') : '';
+        const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${testPackageIds}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=${this.customerName || ''}&lab_code=${this.labCode || ''}&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
         
         this.apiService.getData(apiUrl).subscribe((data: any) => {
             this.dataList = data.Data.ListData;
