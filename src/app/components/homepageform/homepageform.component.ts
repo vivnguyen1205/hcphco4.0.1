@@ -88,8 +88,18 @@ export class HomepageformComponent implements OnInit {
     drawDateTo?: string;
     completeDateFrom?: string;
     completeDateTo?: string;
-    NgForm: Form
-    
+    // myform: FormGroup;
+    // labCode: FormControl;
+    // doctor: FormControl;
+    // customerName: FormControl;
+    // hospital: FormControl;
+  
+    selectedOption: string = '-1';
+
+  onSelectionChange(event: any) {
+    this.selectedOption = event.target.value;
+    console.log('Selected option:', this.selectedOption);
+  }
     onChangeRecieveDate(date1: any) {
         this.date1 = date1?.value;
         console.log(this.date1);
@@ -139,6 +149,7 @@ export class HomepageformComponent implements OnInit {
         this.getCombo();
         this.getTestPackage();
         this.onSearch()
+        this
     }
     range = new FormGroup({
         start: new FormControl(),
@@ -252,7 +263,7 @@ export class HomepageformComponent implements OnInit {
         console.log(this.drawDateFrom, this.drawDateTo);
         console.log(this.completeDateFrom, this.completeDateTo);
         const testPackageIds = this.packageArr.length > 0 ?  this.packageArr.join(',') : '';
-        const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${testPackageIds}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=${this.customerName || ''}&lab_code=${this.labCode || ''}&Type=-1&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
+        const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${testPackageIds}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=${this.customerName || ''}&lab_code=${this.labCode || ''}&Type=${this.selectedOption}&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
         
         this.apiService.getData(apiUrl).subscribe((data: any) => {
             this.dataList = data.Data.ListData;
