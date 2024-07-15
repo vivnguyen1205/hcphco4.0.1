@@ -7,7 +7,7 @@
                 <div class="row">
                 
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
-                        <input pInputText id="labCode" formControlName="labCode" [(ngModel)]="labCode" autocomplete="off" />
+                        <input pInputText id="labCode"  [(ngModel)]="labCode" autocomplete="off" />
                         <label for="labCode" class="text-color-gs">Lab Code : </label>
                         
                     </p-floatLabel>
@@ -15,11 +15,11 @@
 
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
                         <input pInputText id="customerName" [(ngModel)]="customerName" autocomplete="off" />
-                        <label for="customerName" formControlName="customerName" class="text-color-gs">Customer name:</label>
+                        <label for="customerName"  class="text-color-gs">Customer name:</label>
                     </p-floatLabel>
                   
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
-                        <p-dropdown formControlName="hospital" [options]="HospitalList" optionValue="Id" optionLabel="Name"
+                        <p-dropdown  [options]="HospitalList" optionValue="Id" optionLabel="Name"
                             (onChange)="onChangeHospital($event)" inputId="float-label" />
                         <!-- inputId="float-label" /> -->
                         <!-- <option *ngFor="let hospital of HospitalList" [value]="hospital.Id">
@@ -32,7 +32,7 @@
             
 
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
-                        <p-dropdown formControlName="doctor" [options]="DoctorList" optionValue="Id" optionLabel="Name"
+                        <p-dropdown  [options]="DoctorList" optionValue="Id" optionLabel="Name"
                             (onChange)="onChangeDoctor($event)" inputId="float-label" />
                         <label for="float-label" class="text-color-gs">Referred doctor:</label>
                     </p-floatLabel>

@@ -163,9 +163,6 @@ export class HomepageformComponent implements OnInit {
             console.log(this.HospitalList);
         });
     }
-    resetForm(){
-
-    }
     
     getCombo() {
         this.apiService.getData(this.comboApi).subscribe((data: any) => {

@@ -354,39 +354,12 @@ section {
     bottom: 0;
 }
 
-.product-content {
-    min-height: 180px !important;
-}
-
-.pathologicals-title1 {
-    width: 100%;
-    color: #f59220;
-}
-
-.pathologicals-title {
-    width: 100%;
-    color: white;
-    background-color: #f59220;
-    border-radius: 0px 15px 0px 0px;
-}
-
-
-.col-right-product-item {
-    margin: 10px
-}
-
-.col-left-product-item {
-    margin-top: 10px;
-    margin-bottom: 10px
-}
 
 
 
 
 
-.tab-loyalty.active {
-    color: black !important;
-}
+
 
 .text-color-gs {
     color: #038395 !important;
@@ -405,49 +378,6 @@ section {
     color: white;
 }
 
-.custom-btn-group {
-    color: #038395;
-    border-color: #038395;
-}
-
-.pathologicals-content {
-    border-color: #038395 !important;
-}
-
-.pathologicals-content-header {
-    width: 100%;
-    color: white;
-    background-color: #038395;
-    border-radius: 0px 15px 0px 0px;
-}
-
-.pathologicals-title-color {
-    color: #f59220;
-}
-
-.loyalty-204 img {
-    max-width: 100%;
-    width: 35%;
-    margin-bottom: 30px;
-}
-
-.loyalty-204 p {
-    padding: 0 10%;
-}
-.show-hide-password {
-    position: absolute;
-    right: 1rem;
-    top: 0.7rem;
-    z-index: 99999;
-    color: #29b5bb
-}
-
-  
-  a {
-    text-decoration: none;
-    color: var(--primary-color);
-  }
-  
 
   
   
@@ -460,22 +390,4 @@ section {
     box-shadow: var(--card-shadow);
     border-radius: 12px;
   }
-  .card:last-child {
-    margin-bottom: 0;
-  }
-  
-  button{
-    margin: 0 auto;
-}
-  
-  h1, h2, h3, h4, h5, h6 {
-    margin: 1.5rem 0 1rem 0;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--surface-900);
-  }
-  h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
-    margin-top: 0;
-  }
-  
+ 

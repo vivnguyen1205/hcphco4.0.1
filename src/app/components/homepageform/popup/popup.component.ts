@@ -43,7 +43,9 @@ import {
         animate('.5s ease'),
       ], {params: {startHeight: 0}})
     ])
+    
   ],
+
   selector: 'app-popup',
   templateUrl: './popup.component.html', 
   styleUrl: './popup.component.scss',

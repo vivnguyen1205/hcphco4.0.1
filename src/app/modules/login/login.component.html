@@ -1,5 +1,8 @@
+
 <body class="login-page" style="min-height: 439.32px;">
+    <div class="sparkle" >
     <div style="align-items: center;">
+        <div class="bounce-in-right">
         <div class="login-box">
             <div class="card card-outline card-primary">
                 <div class="card-header text-center">
@@ -14,7 +17,8 @@
                     </a>
                 </div>
                 <!-- login component -->
-                <div class="card-body" [class.mat-elevation-z2]="isActive">
+               
+                <div class="card-body" >
                     <p class="login-box-msg" style="font-weight: bold;">Login to the system</p>
                     <form [formGroup]="formGroup">
                         <div class="row">
@@ -118,7 +122,11 @@ placeholder="Enter your username" />
                     </form>
 
                 </div>
+            
             </div>
         </div>
+    </div>
+        </div>
+
     </div>
     <div id="loading"></div>

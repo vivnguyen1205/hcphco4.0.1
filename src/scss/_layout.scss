@@ -30,6 +30,7 @@ body,
     }
 
     .main-sidebar {
+      
       left: inherit;
     }
   }
@@ -67,6 +68,7 @@ body,
     }
 
     .sidebar {
+      
       margin-top: $main-header-height-sm;
     }
   }
@@ -552,7 +554,7 @@ body:not(.layout-fixed) {
   .main-sidebar {
     height: inherit;
     min-height: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
 
     .sidebar {

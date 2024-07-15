@@ -1,9 +1,18 @@
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TokenStorageService } from './../../services/token-storage.service';
 import {UserComponent} from '@modules/main/header/user/user.component';
 import {ApiService} from './../../services/api.service';
 import {ElementRef, Input} from '@angular/core';
 import { FloatLabelModule } from "primeng/floatlabel"  
+import { EventListenerObject } from 'rxjs/internal/observable/fromEvent';
+// import { EventEmitter } from 'stream';
+import { EventEmitter } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { HostListener } from '@angular/core';
+import { compass } from 'ngx-bootstrap-icons';
+// import { DotLottie } from '@lottiefiles/dotlottie-js';
 import {
+
     Component,
     OnInit,
     OnDestroy,
@@ -28,22 +37,44 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 // import {HTMLInputELement} from '@angular/forms';
 // import {ViewChild, AfterViewInit } from '@angular/core';
 import {ViewChild, AfterViewInit} from '@angular/core';
-
+import {animate, state, style, transition, trigger} from '@angular/animations';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
-})
-export class LoginComponent implements OnInit {
-    formGroup: FormGroup;
+    styleUrls: ['./login.component.scss'],
+    animations: [
+        trigger('openClose', [
+            state('closed', style({ transform: 'translateX(120%)'})),
+            state('open', style({ transform: 'translateX(0)'})),
+            transition('closed => open', [
+                animate('is-ease-in')
+            ]),
+            
+        ]
+        
+        )
+        ],
+   
 
+        
+   
+    })
+    
+export class LoginComponent implements OnInit {
+    
+    formGroup: FormGroup;
+    protected menuState: 'open' | 'closed' = 'closed';
+    protected menuOpen = false;
     constructor(
         private router: Router,
         private ApiService: ApiService,
         private tokenStorageService: TokenStorageService,
         private renderer: Renderer2,
         private fb: FormBuilder
-    ) {}
+    ) 
+    {}
+    
+    
 
     ngOnInit(): void {
         this.formGroup = new FormGroup({
@@ -59,6 +90,8 @@ export class LoginComponent implements OnInit {
         });
     }
     isActive = true;
+    
+    
     onLogin() {
     
         const loginApi: string =
@@ -85,11 +118,40 @@ export class LoginComponent implements OnInit {
         });
         
     }
+     
 
     logout(){
         this.tokenStorageService.signOut();
         this.router.navigateByUrl('login');
     }
+
+
+      @HostListener('document:mousemove', ['$event']) 
+    update(e) {
+    var x = e.clientX || e.touches[0].clientX
+    var y = e.clientY || e.touches[0].clientY
+  
+    document.documentElement.style.setProperty('--cursorX', x + 'px')
+    document.documentElement.style.setProperty('--cursorY', y + 'px')
+    console.log(e);
+  }
+
+  
+nbElements = 50; // Number of stars & sparkles
+
+// CSS Classes available
+// shapes = ['sparkle', 'star'];
+// sizes = ['','medium', 'small'];
+// styles = ['', 'alt', 'alt2'];
+// animations = ['pulse', 'pulse-1', 'pulse-2', 'pulse-3'];
+
+
+  
+  
+     
+
+
+    
 
 //     @HostBinding('class') class = 'login-box';
 //     public loginForm: UntypedFormGroup;
@@ -102,5 +164,22 @@ export class LoginComponent implements OnInit {
 //         private toastr: ToastrService,
 //         private appService: AppService
 //     ) {}
-
+//PANDA 
 }
+// PANDA 
+// @HostListener('document:mousemove', ['$event']) 
+// (document).on( "mousemove", function( event ) {
+//     var dw = (document).width() / 15;
+//     var dh = (document).height() / 15;
+//     var x = event.pageX/ dw;
+//     var y = event.pageY/ dh;
+//     ('.eye-ball').css({
+//       width : x,
+//       height : y
+//     });
+//   });
+
+bootstrapApplication(LoginComponent, {
+    providers: [provideAnimationsAsync()
+    ]
+  });

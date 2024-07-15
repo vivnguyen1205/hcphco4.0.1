@@ -40,6 +40,7 @@
     "@angular/router": "18.0.0",
     "@auth0/angular-jwt": "^5.2.0",
     "@coreui/angular": "^5.2.2",
+    "@dotlottie/dotlottie-js": "^0.7.2",
     "@fortawesome/angular-fontawesome": "0.15.0",
     "@fortawesome/fontawesome-svg-core": "6.5.2",
     "@fortawesome/free-brands-svg-icons": "6.5.2",
