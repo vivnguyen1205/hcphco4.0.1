@@ -28,6 +28,7 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {Table} from 'primeng/table';
 import {ImportsModule} from 'primeimports';
 import {SortEvent} from 'primeng/api';
+import { Router } from '@angular/router';
 import {ProductService} from '../../services/productservice';
 import {EventListenerObject} from 'rxjs/internal/observable/fromEvent';
 import {Data} from '@angular/router';
@@ -36,7 +37,7 @@ import { FormBuilder } from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { environment } from 'environments/environment';
 import { Form } from '@profabric/angular-components';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 interface Column {
     field: string;
     header: string;
@@ -47,6 +48,18 @@ interface Column {
     templateUrl: './homepageform.component.html',
     styleUrl: './homepageform.component.scss',
     providers: [DialogService, DatePipe],
+    animations: [
+        trigger('slideInOut', [
+          state('in', style({ transform: 'translateX(0)' })),
+          transition(':enter', [
+            style({ transform: 'translateX(100%)' }),
+            animate('0.5s ease-out')
+          ]),
+          transition(':leave', [
+            animate('0.5s ease-in', style({ transform: 'translateX(-100%)' }))
+          ])
+        ])
+    ]
 })
 export class HomepageformComponent implements OnInit {
     isLoading = true;
@@ -55,7 +68,7 @@ export class HomepageformComponent implements OnInit {
     isSorted: boolean = null;
     ref: DynamicDialogRef | undefined;
     constructor(
-        
+        private router: Router,
         fb: FormBuilder,
         private apiService: ApiService,
         public dialogService: DialogService,
@@ -149,7 +162,6 @@ export class HomepageformComponent implements OnInit {
         this.getCombo();
         this.getTestPackage();
         this.onSearch()
-        this
     }
     range = new FormGroup({
         start: new FormControl(),

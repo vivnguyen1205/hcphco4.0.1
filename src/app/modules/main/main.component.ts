@@ -10,11 +10,29 @@ import {
 } from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 
 @Component({
     selector: 'app-main',
     templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss']
+    styleUrls: ['./main.component.scss'],
+    animations: [
+    trigger('routerTransition', [
+        transition('* <=> *', [    
+          query(':enter, :leave', style({ position: 'fixed', width:'100%' })),
+          group([ 
+            query(':enter', [
+              style({ transform: 'translateX(100%)' }),
+              animate('0.5s ease-in-out', style({ transform: 'translateX(0%)' }))
+            ]),
+            query(':leave', [
+              style({ transform: 'translateX(0%)' }),
+              animate('0.5s ease-in-out', style({ transform: 'translateX(-100%)' }))]),
+          ])
+        ])
+      ])
+    ]
+     
 })
 export class MainComponent implements OnInit, AfterViewInit {
     @HostBinding('class') class = 'wrapper';
@@ -93,6 +111,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     onToggleMenuSidebar() {
         this.store.dispatch(new ToggleSidebarMenu());
     }
+    getState(outlet) {
+        // Changing the activatedRouteData.state triggers the animation
+        return outlet.activatedRouteData.state;
+      }
 
     ngAfterViewInit() {
         this.appLoaded = true;

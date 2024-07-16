@@ -10,13 +10,33 @@
 @import "primeicons/primeicons.css";
 
 @import './scss/adminlte.scss';
+/* Define keyframes for the sparkle effect */
+
+  
+  /* Style for the sparkle effect */
+
+  
+  /* Container for sparkles */
+
 
 :root {
+
+    cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
+    z-index:auto;
+
+ 
+   
+  
+
+// cursor: url(../src/assets/img/icons8-cursor-100_resized.png), auto;
+    
  
   --cursorX: 50vw;
   --cursorY: 50vh;
+  
 }
 :root:before {
+  
   content: '';
   display: block;
   width: 100%;
@@ -31,16 +51,22 @@
   )
 }
 body {
+  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
+  z-index:auto;
     width: 100vw;
     height: 100vh;
 }
 
 ::-webkit-scrollbar {
+  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
+  z-index:auto;
     width: 0px;
     background: transparent;
 }
 
 .content {
+  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
+  z-index:auto;
     padding: 0 0.5rem;
 }
 

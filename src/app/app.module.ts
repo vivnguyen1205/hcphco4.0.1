@@ -12,6 +12,7 @@ import { InfoDemo } from '@components/homepageform/popup/infodemo';
 // import { FormsModule } from '@angular/forms';
 // import { FormsModule } from '@angular/forms';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { App } from './app';
 // import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';
@@ -141,6 +142,7 @@ export function tokenGetter() {
             },
           }),
         //   LoadingComponent,
+        BrowserAnimationsModule,
         ImportsModule,
         CalendarModule,
         TableComponent,
@@ -186,5 +188,6 @@ export function tokenGetter() {
         JwtHelperService,
         provideAnimationsAsync(),
     ]
+    
 })
 export class AppModule { }
