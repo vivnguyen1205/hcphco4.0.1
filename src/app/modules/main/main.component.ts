@@ -1,6 +1,7 @@
 import {AppState} from '@/store/state';
 import {ToggleSidebarMenu} from '@/store/ui/actions';
 import {UiState} from '@/store/ui/state';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     AfterViewInit,
     Component,

@@ -53,7 +53,8 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
-        canActivate: [NonAuthGuard]
+        canActivate: [NonAuthGuard],
+        data: {animation: 'isRight'}
     },
     {
         path: 'register',

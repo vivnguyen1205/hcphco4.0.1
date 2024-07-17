@@ -70,8 +70,7 @@ export class MenuItemComponent implements OnInit {
         }
     }
     public onLogout(): void {
-        debugger
         this.tokenStorageService.signOut();
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
     }
 }

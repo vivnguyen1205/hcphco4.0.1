@@ -8,10 +8,7 @@
 //     background-position: center center;
 //     background-size: cover;
 // }
-
 .login-page, .register-page {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
      background-color: transparent;
     background-image: url(../../../assets/img/bg.jpeg);
     background-repeat: no-repeat;
@@ -28,12 +25,8 @@
     -ms-flex-pack: center;
     justify-content: center;
     text-align: -webkit-center;
-       
-
 }
 .nav{
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     margin-top:167px;
     width:1024px;
     height:34px;
@@ -41,15 +34,11 @@
 
 /* Centers the div that nests the nav_buttons */
 .centerButtons {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     margin: 0 auto;
     float: left;
 } 
 
 .nav_button{
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     height:34px;
     margin-right:10px;
     float: left;
@@ -57,8 +46,6 @@
          
 
 .btn-login{
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     position: absolute; /* or relative */
   left: 50%;
   top: 200%;
@@ -80,8 +67,6 @@
   }
 
   .btn-login:hover {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
@@ -91,22 +76,16 @@
 
 // logo img styles
 img {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     vertical-align: middle;
     border-style: none;
 }
 .login-page a.h1 img {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     width: 260px;
     margin-bottom: 10px;
 }
 // / end of logo image styles 
 
 .title{
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     font-size: 2.4rem;
     font-weight: 900;
             font-family: Arial, Helvetica, sans-serif; 
@@ -118,25 +97,16 @@ img {
 // login form styles
 
 .login-box, .register-box .username{
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     width: 80%;
 }
 
 user agent stylesheet
 div {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     display: block;
     unicode-bidi: isolate;
 }
 
-
 body {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
-
-
     margin: 0;
     font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
@@ -148,8 +118,6 @@ body {
 }
 
 html {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -157,14 +125,10 @@ html {
 }
 
 .login-page .card {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     background-color: rgb(255 255 255 / 70%);
     border-radius: 1rem;
     height: 400px;
 }#loading {
-    cursor : url(../../../assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
     display: none;
     width: 100%;
     height: 100%;
@@ -447,6 +411,8 @@ a {
 }
 
 //
+body{background-color: #123;}
+.star{display: block; background-color: #fff; position: absolute; border-radius: 100%; animation-timing-function: linear;animation-iteration-count: infinite;}
 
 @keyframes move_right {
    from { transform: rotate(0deg) translateX(8px) rotate(0deg); }
@@ -468,129 +434,559 @@ a {
 .intro .customization-js{margin-right: 2em;}
 
 
-$particles: 50;
-$width: 500;
-$height: 500;
+
+
+// BACKGROUND IMAGE 
+// .login-page, .register-page, .download-page {
+//     background-color: transparent;
+//     background-image: url(../../../assets/img/bg.jpeg);
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: cover;
+// }
+
+.login-page, .register-page {
+    background-color: transparent;
+   background-image: url(../../../assets/img/bg.jpeg);
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-size: cover;
+   -ms-flex-align: center;
+   align-items: center;
+   background-color: #e9ecef;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   height: 100vh;
+   -ms-flex-pack: center;
+   justify-content: center;
+   text-align: -webkit-center;
+      
+
+}
+.nav{
+  
+   margin-top:167px;
+   width:1024px;
+   height:34px;
+}
+
+/* Centers the div that nests the nav_buttons */
+.centerButtons {
+  
+   margin: 0 auto;
+   float: left;
+} 
+
+.nav_button{
+  
+   height:34px;
+   margin-right:10px;
+   float: left;
+}
+        
+
+.btn-login{
+   position: absolute; /* or relative */
+ left: 50%;
+ top: 200%;
+transform: translate(-50%, -50%);
+
+   background-image: linear-gradient(to right, #348F50 0%, #56B4D3  51%, #348F50  100%);
+   // margin: 10px;
+   padding: 10px 30px;
+   text-align: center;
+   text-transform:none;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 20px;
+   display: block;
+   width: 50%;
+
+ }
+
+ .btn-login:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+
+// logo img styles
+img {
+   vertical-align: middle;
+   border-style: none;
+}
+.login-page a.h1 img {
+   width: 260px;
+   margin-bottom: 10px;
+}
+// / end of logo image styles 
+
+.title{
+   font-size: 2.4rem;
+   font-weight: 900;
+           font-family: Arial, Helvetica, sans-serif; 
+           // background-color: #14495a;
+           background: linear-gradient(to right,  #14495a 0%, #56B4D3  51%, #348F50); 
+           -webkit-text-fill-color: transparent; 
+           -webkit-background-clip: text; 
+}
+// login form styles
+
+.login-box, .register-box .username{
+   width: 80%;
+}
+
+user agent stylesheet
+div {
+   display: block;
+   unicode-bidi: isolate;
+}
+
+
+body {
+   margin: 0;
+   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #212529;
+   text-align: left;
+   background-color: #fff;
+}
+
+html {
+   font-family: sans-serif;
+   line-height: 1.15;
+   -webkit-text-size-adjust: 100%;
+   -webkit-tap-highlight-color: transparent;
+}
+
+.login-page .card {
+   background-color: rgb(255 255 255 / 70%);
+   border-radius: 1rem;
+   height: 400px;
+}#loading {
+   display: none;
+   width: 100%;
+   height: 100%;
+   background: url(/Theme/dist/img/loading.gif) no-repeat center;
+   background-color: rgba(0,0,0,.5);
+   position: fixed;
+   z-index: 9999!important;
+   top: 2px;
+   left: 0
+}
+
+.login-page label:not(.form-check-label):not(.custom-file-label) {
+   font-weight: 400
+}
+
+
+
+.login-page a.h1 {
+   font-size: 28px;
+   color: #444
+}
+
+.login-page a.h1 img {
+   width: 260px;
+   margin-bottom: 10px
+}
+
+.login-page [class*=icheck-]>input:first-child+input[type=hidden]+label::before,.login-page [class*=icheck-]>input:first-child+label::before {
+   border-color: #0c8698
+}
+
+.login-page .icheck-primary>input:first-child:checked+input[type=hidden]+label::before,.login-page .icheck-primary>input:first-child:checked+label::before {
+   background-color: #0c8698;
+   border-color: #0c8698
+}
+
+.login-page .btn-login {
+   background-color: #0c8698;
+   border-color: #0c8698
+}
+
+.login-page .btn-login:hover {
+   background-color: #29b5bb;
+   border-color: #29b5bb
+}
+.login-page .social-auth-links {
+   margin: 0
+}
+
+.login-page .btn-social {
+   background-color: #000;
+   border-color: #000
+}
+
+.login-page .btn-social:hover {
+   background-color: #000000b6;
+   border-color: #000000b6
+}
+
+.login-box .form-control {
+   border-radius: 1rem;
+   border-color: #29b5bb;
+   border-left: none;
+   padding-left: 30px
+}
+
+.login-page .input-group-append {
+   margin-left: -1px;
+   margin-right: -18px;
+   z-index: 9
+}
+
+.login-page .input-group-text {
+   border-radius: 50%!important;
+   border-color: #29b5bb
+}
+
+.login-page .input-group-text span {
+   color: #29b5bb
+}
+
+.change-lang {
+   list-style: none;
+   transition: all .15s ease-out;
+   -webkit-transition: all .15s ease-out;
+   -moz-transition: all .15s ease-out;
+   -ms-transition: all .15s ease-out;
+   -o-transition: all .15s ease-out
+}
+
+.change-lang li {
+   float: left
+}
+
+.change-lang li a {
+   display: block
+}
+
+.change-lang li a img {
+   height: 22px;
+   width: auto;
+   border: 1px solid #fff;
+   margin: 10px 0 0 5px
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+   font-family: roboto condensed,sans-serif
+}
+
+.color-green {
+   color: green
+}
+
+.home-page .small-box p {
+   min-height: 51px;
+   font-size: 1.05rem
+}
+
+// a {
+//     cursor: pointer
+// }
+
+.badge:not(.count-noti) {
+   font-size: 80%
+}
+
+
+.combo-status[data-value="1"] {
+   background: #00a65a;
+   color: #fff
+}
+
+.combo-status[data-value="0"] {
+   background: #777;
+   color: #fff
+}
+
+.combo-status[data-value="2"] {
+   background: #ff851b;
+   color: #fff
+}
+
+
+
+.content-wrapper {
+   background-color: transparent
+}
+
+.cb-search {
+   padding: 1rem 1.25rem 0
+}
+
+.jsgrid-table {
+   font-family: roboto condensed,sans-serif
+}
+
+#tableFilter .jsgrid-table,#tableReport .jsgrid-table {
+   font-size: 13px
+}
+
+.jsgrid a.btn {
+   text-align: center;
+   margin: 0 auto;
+   float: left;
+   width: 87px;
+   display: block;
+   font-size: 12px;
+   margin: 0 3px;
+   white-space: nowrap
+}
+
+.details ul.detail-ul {
+   margin: 10px 0 0;
+   padding: 0
+}
+
+.details ul.detail-ul li {
+   list-style: none;
+   border-top: 1px solid #dee2e6;
+   padding: 3px;
+   display: block;
+   clear: both;
+   overflow: hidden
+}
+
+.details ul.detail-ul li:nth-of-type(odd) {
+   background-color: rgba(0,0,0,.05)
+}
+
+.details ul.detail-ul li label {
+   font-weight: 400!important;
+   margin: 0;
+   min-width: 40%;
+   display: block;
+   float: left
+}
+
+.details ul.detail-ul li span {
+   max-width: 60%;
+   display: block;
+   float: left
+}
+
+.inline-block {
+   display: inline-block
+}
+
+.ckb-send {
+   width: 16px;
+   height: 16px
+}
+
+
+.jsgrid .jsgrid-grid-header,.jsgrid .jsgrid-grid-body {
+   overflow-y: hidden!important
+}
+
+.jsgrid-cell {
+   overflow: hidden
+}
+
+.download-page {
+   font-size: 18px;
+   -ms-flex-align: center;
+   align-items: center;
+   background-color: #e9ecef;
+   display: -ms-flexbox;
+   display: flex;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   height: 100vh;
+   -ms-flex-pack: center;
+   justify-content: center
+}
+
+
+.custom-radio .custom-control-label {
+   // cursor: pointer;
+   margin-top: 8px
+}
+
+.custom-download a.btn {
+   text-align: center;
+   width: 80px;
+   display: inline-block;
+   font-size: 12px;
+   margin: 0 3px;
+   white-space: nowrap;
+   float: right
+}
+
+
+
+.bounce-in-right {
+ animation: bounce-in-right 2s ;
+}
+@keyframes bounce-in-right {
+ 0% {
+   opacity: 0;
+   transform: translateX(-2000px);
+ }
+ 60% {
+   opacity: 1;
+   transform: translateX(50px);
+ }
+ 80% { transform: translateX(-30px); }
+ 100% { transform: translateX(0); }
+}
+
+//
+
+@keyframes move_right {
+  from { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+   to   { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
+}
+
+@keyframes move_left {
+  from { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+   to   { transform: rotate(-360deg) translateX(8px) rotate(360deg); }
+}
+
+/* the intro panel */
+// .intro{color:#63baf7; margin: 1em; font-family: Jura; font-size: 11pt}
+// .intro h3{font-size: 16pt; margin-bottom: 0}
+// .intro ul {padding-left: .3em;}
+// .intro li {list-style-type: none; margin-left: .5em}
+// .intro .customization-panel{display: flex;flex-wrap: wrap;}
+// .intro .customization-title{flex-basis : 100%;padding: 10px 0; font-size: 14pt; text-shadow: 0 0 .3em #63baf7; color: #fff;}
+// .intro .customization-js{margin-right: 2em;}
+
+
+$particles: 100;
+$width: 800;
+$height: 800;
 
 // Create the explosion...
 $box-shadow: ();
 $box-shadow2: ();
 @for $i from 0 through $particles {
-  $box-shadow: $box-shadow,
-               random($width)-$width / 2 + px
-               random($height)-$height / 1.2 + px
-               hsl(random(360), 100, 50);
-  $box-shadow2: $box-shadow2, 0 0 #fff
+ $box-shadow: $box-shadow,
+              random($width)-$width / 2 + px
+              random($height)-$height / 1.2 + px
+              hsl(random(360), 100, 50);
+ $box-shadow2: $box-shadow2, 0 0 #fff
 }
 @mixin keyframes ($animationName) {
-    @-webkit-keyframes #{$animationName} {
-        @content;
-    }
+   @-webkit-keyframes #{$animationName} {
+       @content;
+   }
 
-    @-moz-keyframes #{$animationName} {
-        @content;
-    }
+   @-moz-keyframes #{$animationName} {
+       @content;
+   }
 
-    @-o-keyframes #{$animationName} {
-        @content;
-    }
+   @-o-keyframes #{$animationName} {
+       @content;
+   }
 
-    @-ms-keyframes #{$animationName} {
-        @content;
-    }
+   @-ms-keyframes #{$animationName} {
+       @content;
+   }
 
-    @keyframes #{$animationName} {
-        @content;
-    }
+   @keyframes #{$animationName} {
+       @content;
+   }
 }
 
 @mixin animation-delay ($settings) {
-    -moz-animation-delay: $settings;
-    -webkit-animation-delay: $settings;
-    -o-animation-delay: $settings;
-    -ms-animation-delay: $settings;
-    animation-delay: $settings;
+   -moz-animation-delay: $settings;
+   -webkit-animation-delay: $settings;
+   -o-animation-delay: $settings;
+   -ms-animation-delay: $settings;
+   animation-delay: $settings;
 }
 
 @mixin animation-duration ($settings) {
-    -moz-animation-duration: $settings;
-    -webkit-animation-duration: $settings;
-    -o-animation-duration: $settings;
-    -ms-animation-duration: $settings;
-    animation-duration: $settings;
+   -moz-animation-duration: $settings;
+   -webkit-animation-duration: $settings;
+   -o-animation-duration: $settings;
+   -ms-animation-duration: $settings;
+   animation-duration: $settings;
 }
 
 @mixin animation ($settings) {
-    -moz-animation: $settings;
-    -webkit-animation: $settings;
-    -o-animation: $settings;
-    -ms-animation: $settings;
-    animation: $settings;
+   -moz-animation: $settings;
+   -webkit-animation: $settings;
+   -o-animation: $settings;
+   -ms-animation: $settings;
+   animation: $settings;
 }
 
 @mixin transform ($settings) {
-    transform: $settings;
-    -moz-transform: $settings;
-    -webkit-transform: $settings;
-    -o-transform: $settings;
-    -ms-transform: $settings;
+   transform: $settings;
+   -moz-transform: $settings;
+   -webkit-transform: $settings;
+   -o-transform: $settings;
+   -ms-transform: $settings;
 }
 
 body {
-  margin:0;
-  padding:0;
-  background: #000;
-  overflow: hidden;
+ margin:0;
+ padding:0;
+ background: #000;
+ overflow: hidden;
 }
 
 .pyro > .before, .pyro > .after {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  box-shadow: $box-shadow2;
-  @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
+ position: absolute;
+ width: 5px;
+ height: 5px;
+ border-radius: 50%;
+ box-shadow: $box-shadow2;
+ @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
 }
-    
+   
 .pyro > .after {
-  @include animation-delay((1.25s, 1.25s, 1.25s));
-  @include animation-duration((1.25s, 1.25s, 6.25s));
+ @include animation-delay((1.25s, 1.25s, 1.25s));
+ @include animation-duration((1.25s, 1.25s, 6.25s));
 }
-        
+       
 @include keyframes(bang) {
-  to {
-    box-shadow:$box-shadow;
-  }
+ to {
+   box-shadow:$box-shadow;
+ }
 }
-    
+   
 @include keyframes(gravity)  {
-  to {
-    @include transform(translateY(200px));
-    opacity: 0;
-  }
+ to {
+   @include transform(translateY(200px));
+   opacity: 0;
+ }
 }
-    
+   
 @include keyframes(position) {
-  0%, 19.9% {
-    margin-top: 10%;
-    margin-left: 40%;
-  }
-  20%, 39.9% {
-    margin-top: 40%;
-    margin-left: 30%;
-  }
-  40%, 59.9% {  
-    margin-top: 20%;
-    margin-left: 70%
-  }
-  60%, 79.9% {  
-    margin-top: 30%;
-    margin-left: 20%;
-  }
-  80%, 99.9% {  
-    margin-top: 30%;
-    margin-left: 80%;
-  }
+ 0%, 19.9% {
+   margin-top: 10%;
+   margin-left: 40%;
+ }
+ 20%, 39.9% {
+   margin-top: 40%;
+   margin-left: 30%;
+ }
+ 40%, 59.9% {  
+   margin-top: 20%;
+   margin-left: 70%
+ }
+ 60%, 79.9% {  
+   margin-top: 30%;
+   margin-left: 20%;
+ }
+ 80%, 99.9% {  
+   margin-top: 30%;
+   margin-left: 80%;
+ }
 }
 
 

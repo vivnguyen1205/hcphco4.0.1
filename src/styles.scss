@@ -21,8 +21,7 @@
 
 :root {
 
-    cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
-    z-index:auto;
+   
 
  
    
@@ -51,22 +50,19 @@
   )
 }
 body {
-  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
-  z-index:auto;
+    cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto !important;
     width: 100vw;
     height: 100vh;
 }
 
 ::-webkit-scrollbar {
-  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
-  z-index:auto;
+  
     width: 0px;
     background: transparent;
 }
 
 .content {
-  cursor : url(../src/assets/img/icons8-cursor-100_resized.png), auto;
-  z-index:auto;
+  
     padding: 0 0.5rem;
 }
 

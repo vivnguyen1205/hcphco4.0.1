@@ -48,18 +48,18 @@ interface Column {
     templateUrl: './homepageform.component.html',
     styleUrl: './homepageform.component.scss',
     providers: [DialogService, DatePipe],
-    animations: [
-        trigger('slideInOut', [
-          state('in', style({ transform: 'translateX(0)' })),
-          transition(':enter', [
-            style({ transform: 'translateX(100%)' }),
-            animate('0.5s ease-out')
-          ]),
-          transition(':leave', [
-            animate('0.5s ease-in', style({ transform: 'translateX(-100%)' }))
-          ])
-        ])
-    ]
+    // animations: [
+    //     trigger('slideInOut', [
+    //       state('in', style({ transform: 'translateX(0)' })),
+    //       transition(':enter', [
+    //         style({ transform: 'translateX(100%)' }),
+    //         animate('0.5s ease-out')
+    //       ]),
+    //       transition(':leave', [
+    //         animate('0.5s ease-in', style({ transform: 'translateX(-100%)' }))
+    //       ])
+    //     ])
+    // ]
 })
 export class HomepageformComponent implements OnInit {
     isLoading = true;

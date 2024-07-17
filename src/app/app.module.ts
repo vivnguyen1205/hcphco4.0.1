@@ -9,16 +9,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from './app.component';
 import { InfoDemo } from '@components/homepageform/popup/infodemo';
-// import { FormsModule } from '@angular/forms';
-// import { FormsModule } from '@angular/forms';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { App } from './app';
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// // import { FormsModule } from '@angular/forms';
-// import { FormLayoutDemoComponent } from './formlayoutdemo.component';
-// import { FormLayoutDemoRoutingModule } from './formlayoutdemo-routing.module';
+
 import { AutoCompleteModule } from "primeng/autocomplete";
 // import { CalendarModule } from "primeng/calendar";
 import { ChipsModule } from "primeng/chips";
@@ -82,6 +74,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { PopupComponent } from '@components/homepageform/popup/popup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+// import { SquigglesComponent } from './squiggles/squiggles.component';
 // import { PopupComponent } from './components/homepageform/popup/popup.component';
 registerLocaleData(localeEn, 'en-EN');
 
