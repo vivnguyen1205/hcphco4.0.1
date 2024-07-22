@@ -300,7 +300,7 @@ export class HomepageformComponent implements OnInit {
                 // totalProducts: this.products ? this.products.length : 0
             },
             header: 'Lab Details',
-            width: '60vw',
+            width: '80vw',
             contentStyle: { overflow: 'auto' },
             breakpoints: {
                 '960px': '75vw',

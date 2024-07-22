@@ -20,6 +20,18 @@ html {
 .header{
     color:blueviolet;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    font-size: small;
+  }
+  
+  tr:nth-child(odd) {background-color:  #36919123;}
 body {
     font-family: var(--font-family);
     font-weight: normal;

@@ -21,10 +21,6 @@
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
                         <p-dropdown  [options]="HospitalList" optionValue="Id" optionLabel="Name"
                             (onChange)="onChangeHospital($event)" inputId="float-label" />
-                        <!-- inputId="float-label" /> -->
-                        <!-- <option *ngFor="let hospital of HospitalList" [value]="hospital.Id">
-                            {{hospital.Name}}
-                        </option> -->
                         <label for="float-label" class="text-color-gs">Location:</label>
                         <!-- <button type="reset" (click)="myForm.reset">Reset</button> -->
 
@@ -124,62 +120,7 @@
                         </div>
                       </div>
                       
-                    <!-- <div class="col-md-6 col-sm-12 col-12" style="padding:0.75rem">
-                        <div class="form-group" style="margin-right: 10px;">
-                            <label class="text-color-gs">List of samples:</label>
-                            <div class="button-checkbox">
-                                <div class="form-group">
-
-                                    <input type="radio" name="radioXN" id="radioXN" autocomplete="off" value="-1"
-                                        checked="">
-                                    <div class="btn-group" style="margin-right: 10px;"
-                                    >
-                                        <label for="radioXN" class="btn btn-secondary btn-sm">
-                                            <span class="fa fa-check-square fa-lg"></span>
-                                            <span class="fa fa-square fa-lg"></span>
-                                            <span class="content">All</span>
-                                        </label>
-                                    </div>
-
-
-                                    <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13">
-                                    <div class="btn-group" style="margin-right: 10px;">
-                                        <label for="radioXN-1" class="btn btn-success btn-sm">
-                                            <span class="fa fa-check-square fa-lg"></span>
-                                            <span class="fa fa-square fa-lg"></span>
-                                            <span class="content">Completed</span>
-                                        </label>
-                                    </div>
-
-
-                                    <input type="radio" name="radioXN" id="radioXN-3" autocomplete="off" value="11">
-                                    <div class="btn-group" style="margin-right: 10px;">
-                                        <label for="radioXN-3" class="btn btn-warning btn-sm">
-                                            <span class="fa fa-check-square fa-lg"></span>
-                                            <span class="fa fa-square fa-lg"></span>
-                                            <span class="content">Regain blood sample</span>
-                                        </label>
-                                    </div>
-
-
-                                    <input type="radio" name="radioXN" id="radioXN-2" autocomplete="off" value="5">
-                                    <div class="btn-group" style="margin-right: 10px;">
-                                        <label for="radioXN-2" class="btn btn-danger btn-sm">
-                                            <span class="fa fa-check-square fa-lg"></span>
-                                            <span class="fa fa-square fa-lg"></span>
-                                            <span class="content">Overdue</span>
-                                        </label>
-
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div> -->
+                   
                     <!-- <mat-spinner></mat-spinner> -->
 
                     <div class="form-group">
@@ -204,24 +145,11 @@
                                 style="border-radius: 20px;">
                                 <i class="fa fa-file-excel"></i> Export excel
                             </button>
-                            <br> 
-                            <!-- <button type="reset" >Reset</button> -->
-
-                            <!-- <button (click)="myForm.reset" class="btn bg-gradient-primary"
-                                style="border-radius: 20px;">
-                                <i class="fa fa-file-excel"></i> Reset
-                            </button> -->
+                   
                           
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
 
             </div>
 
@@ -229,12 +157,8 @@
         </div>
     </div>
 
-
-
     <div class="grid">
-        <!-- @if(isLoading){
-            <app-loading>  </app-loading>
-        } -->
+     
         <div class="col-12 md:col-6" style="padding: 15px">
             <div class="card p-fluid" style="padding: 15px">
 
@@ -272,13 +196,10 @@
                             <th pSortableColumn="labCode" class="title">
                                 Lab Code <p-sortIcon field="labCode" />
                             </th>
-
-                            <label>
-                                <br>
                                 <th pSortableColumn="sampleDrawDate" class="title">
                                     Sample Draw Date <p-sortIcon field="sampleDrawDate" />
                                 </th>
-                            </label>
+                    
                             <th pSortableColumn="sampleRecieveDate" class="title">
                                 Recieved Sample Date at GS <p-sortIcon field="sampleRecieveDate" />
                             </th>
@@ -345,7 +266,7 @@
                             <td class=text>
                                 <!-- sample draw date  -->
                                 {{data.collect_sample_date}}
-
+                            </td>
                             <td class=text>
                                 <!-- sample result return date -->
                                 {{data.date_of_result}}
@@ -366,16 +287,6 @@
                             <td class=text>
                                 {{data.sale_team_name}}
                             </td>
-
-
-                            <!-- <td>
-                {{data.CSFIdEncrypt}}
-            </td>
-
-            -->
-                            <!-- <td>{{ product.name }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.quantity }}</td> -->
                         </tr>
                     </ng-template>
 
