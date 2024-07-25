@@ -39,7 +39,6 @@ export class MenuItemComponent implements OnInit {
                 this.calculateIsActive(event.url);
             });
     }
-
     public handleMainMenuAction() {
         if (this.isExpandable) {
             this.toggleMenu();
@@ -47,6 +46,14 @@ export class MenuItemComponent implements OnInit {
         }
         this.router.navigate(this.menuItem.path);
     }
+
+    // public handleMainMenuAction() {
+    //     if (this.isExpandable) {
+    //         this.toggleMenu();
+    //         return;
+    //     }
+    //     this.router.navigate(this.menuItem.path);
+    // }
 
     public toggleMenu() {
         this.isMenuExtended = !this.isMenuExtended;
@@ -73,4 +80,5 @@ export class MenuItemComponent implements OnInit {
         this.tokenStorageService.signOut();
         this.router.navigate(['/login']);
     }
+    
 }

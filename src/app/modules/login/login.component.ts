@@ -118,7 +118,6 @@ export class LoginComponent implements OnInit {
         this.ApiService.getData(loginApi).subscribe((data: any) => {
             return this.ApiService.getData(loginApi);
         });
-
         this.ApiService.login(val).subscribe((data: any) => {
             console.log(data);
             if (data.StatusCode == 200) {

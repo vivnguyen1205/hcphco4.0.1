@@ -1,3 +1,7 @@
 :host {
     cursor: pointer;
 }
+.active-link {
+    color: #f00; /* Change this to the color you want for active links */
+    background-color: #eee; /* Optional: change the background color for active links */
+  }

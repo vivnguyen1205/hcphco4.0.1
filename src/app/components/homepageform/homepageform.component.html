@@ -1,5 +1,4 @@
 
-<div class="grid">
     <div class="col-12 md:col-6" style="padding: 15px">
         <div class="card p-fluid">
             <br>
@@ -25,7 +24,7 @@
                         <!-- <button type="reset" (click)="myForm.reset">Reset</button> -->
 
                     </p-floatLabel>
-            
+            <br>
 
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
                         <p-dropdown  [options]="DoctorList" optionValue="Id" optionLabel="Name"
@@ -33,9 +32,9 @@
                         <label for="float-label" class="text-color-gs">Referred doctor:</label>
                     </p-floatLabel>
                 </div>
-                <br>
+          
 
-                <br>
+
                 <div class="row">
 
                     <p-floatLabel class="col-md-3 col-sm-12 col-12" style="padding:0.75rem">
@@ -62,11 +61,10 @@
                             inputId="float-label" />
                         <label for="float-label" class="text-color-gs">Test package:</label>
                     </p-floatLabel>
-                    <br>
-                    <br>
+                 
                 </div>
-                <br>
-                <br>
+       
+         
                 <div class="row">
                     <!-- <button type="button" class="btn btn-default" (click)="resetFilters(); heroForm.reset()">New Hero</button> -->
                     <!-- <button (click)="clearInputMethod1()">Clear Input Method 1</button> -->
@@ -129,9 +127,8 @@
                             <!-- <p-button label="Submit" (click)="onSearch()"/> -->
                             <!-- <button pButton pRipple label="Submit" class="p-button-success">
                                 z
-                            </button> -->
-                            <br>
-                            <br>
+                            </button> --><br>
+                       
                             <button (click)="onSearch()" class=" btn bg-gradient-primary"
                                 style="margin-right: 20px; margin-left: 20px; border-radius: 20px;">
                                 <i class="fa fa-search"></i> Search
@@ -159,67 +156,94 @@
 
     <div class="grid">
      
-        <div class="col-12 md:col-6" style="padding: 15px">
+        <div class="col-12 md:col-6" style="padding: 15px;  white-space: nowrap;">
             <div class="card p-fluid" style="padding: 15px">
 
-                <p-table #dt [value]="dataList" [scrollable]="true" scrollHeight="600px"
+                <p-table #dt [value]="dataList"
+                [paginator]="true"
+                [rows]="9"
+                 
                     [tableStyle]="{'min-width': '50rem'}">
-
-                    <ng-template pTemplate="header">
+                    <p-scroller 
+                    [items]="dataList" 
+                    [itemSize]="15" 
+                    scrollHeight="200px" 
+                    orientation="horizontal" 
+                    styleClass="border-1 surface-border" 
+                    [style]="{'width': '200px', 'height': '200px'}">
+                    <ng-template pTemplate="header" >
                         <tr>
 
-                            <th pSortableColumn="code" class="title">
+                            <th pSortableColumn="customer_name" class="title" style="width: fit-content;">
                                 Customer Name
+                                <p-sortIcon field="customer_name" />
                             </th>
-                            <th pSortableColumn="name" class="title">
-                                Date of Birth <p-sortIcon field="name" />
+                            <th pSortableColumn="customer_date_of_birth" class="title">
+                                Date of Birth 
+                                <p-sortIcon field="customer_date_of_birth" />
+                                <!-- <p-sortIcon field="name" /> -->
                             </th>
-                            <th pSortableColumn="category" class="title">
-                                Location <p-sortIcon field="category" />
+                            <th pSortableColumn="hospital_name" class="title">
+                                Location 
+                                <p-sortIcon field="hospital_name" />
                             </th>
-                            <th pSortableColumn="referredDoctor" class="title">
-                                Referred Doctor <p-sortIcon field="referredDoctor" />
+                            <th pSortableColumn="doctor_name" class="title">
+                                Referred Doctor 
+                                <p-sortIcon field="doctor_name" />
                             </th>
-                            <th pSortableColumn="testPackage" class="title">
-                                Test Package <p-sortIcon field="testPackage" />
+                            <th pSortableColumn="service_code_name" class="title">
+                                Test Package 
+                                <p-sortIcon field="service_code_name" />
                             </th>
-                            <th pSortableColumn="sampleStatus" class="title">
-                                Sample Status <p-sortIcon field="sampleStatus" />
+                            <th pSortableColumn="sample_status" class="title">
+                                Sample Status 
+                                <p-sortIcon field="sample_status" />
                             </th>
-                            <th pSortableColumn="combo" class="title">
-                                Combo <p-sortIcon field="combo" />
+                            <th pSortableColumn="combo_name" class="title">
+                                Combo 
+                                <p-sortIcon field="combo_name" />
                             </th>
-                            <th pSortableColumn="comboStatus" class="title">
-                                Combo Status <p-sortIcon field="comboStatus" style="size:  10px;" />
+                            <th pSortableColumn="combo_status_name" class="title">
+                                Combo Status 
+                                <p-sortIcon field="combo_status_name" style="size:  10px;" />
                             </th>
 
-                            <th pSortableColumn="labCode" class="title">
-                                Lab Code <p-sortIcon field="labCode" />
+                            <th pSortableColumn="lab_code" class="title">
+                                Lab Code 
+                                <p-sortIcon field="lab_code" />
                             </th>
-                                <th pSortableColumn="sampleDrawDate" class="title">
-                                    Sample Draw Date <p-sortIcon field="sampleDrawDate" />
+                                <th pSortableColumn="collect_sample_date" class="title">
+                                    Sample Draw Date
+                                     <p-sortIcon field="collect_sample_date" />
                                 </th>
                     
-                            <th pSortableColumn="sampleRecieveDate" class="title">
-                                Recieved Sample Date at GS <p-sortIcon field="sampleRecieveDate" />
+                            <th pSortableColumn="date_of_result" class="title">
+                                Recieved Sample Date at GS 
+                                <p-sortIcon field="date_of_result" />
                             </th>
-                            <th pSortableColumn="resultReturnDate" class="title">
-                                Result Return Date <p-sortIcon field="resultReturnDate" />
+                            <th pSortableColumn="lab_final_result_date" class="title">
+                                Result Return Date 
+                                <p-sortIcon field="lab_final_result_date" />
                             </th>
-                            <th pSortableColumn="labCompletionDate" class="title">
-                                Lab Completion Date <p-sortIcon field="labCompletionDate" />
+                            <th pSortableColumn="recieved_sample_date" class="title">
+                                Lab Completion Date 
+                                <p-sortIcon field="recieved_sample_date" />
                             </th>
-                            <th pSortableColumn="saleRep" class="title">
-                                Sale Rep <p-sortIcon field="saleRep" />
+                            <th pSortableColumn="sale_rep_name" class="title">
+                                Sale Rep 
+                                <p-sortIcon field="sale_rep_name" />
                             </th>
-                            <th pSortableColumn="saleTeam" class="title">
-                                Sale Team <p-sortIcon field="saleTeam" />
+                            <th pSortableColumn="sale_team_name" class="title">
+                                Sale Team 
+                                <p-sortIcon field="sale_team_name" />
                             </th>
 
 
 
                         </tr>
+             
                     </ng-template>
+                </p-scroller>
 
                     <ng-template pTemplate="body" let-data>
                         <tr>
@@ -266,7 +290,7 @@
                             <td class=text>
                                 <!-- sample draw date  -->
                                 {{data.collect_sample_date}}
-                            </td>
+
                             <td class=text>
                                 <!-- sample result return date -->
                                 {{data.date_of_result}}

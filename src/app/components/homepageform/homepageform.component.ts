@@ -14,6 +14,7 @@ import { InfoDemo } from './popup/infodemo';
 // import { LoadingComponent } from '@components/loading/loading.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { FormResetEvent } from '@angular/forms';
+import { ScrollerModule } from 'primeng/scroller';
 import {
 
     DialogService,
@@ -90,7 +91,7 @@ export class HomepageformComponent implements OnInit {
     comboId: number = -1;
     testPackageId: number = -1;
     // testpackage
-
+    items!: string[];
     // DATE RANGE PICKER
     date1: Date | undefined;
     date2: Date | undefined;
@@ -162,7 +163,9 @@ export class HomepageformComponent implements OnInit {
         this.getCombo();
         this.getTestPackage();
         this.onSearch()
+        this.items = Array.from({ length: 1000 }).map((_, i) => `Item #${i}`);
     }
+    
     range = new FormGroup({
         start: new FormControl(),
         end: new FormControl()

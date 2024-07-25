@@ -74,6 +74,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { PopupComponent } from '@components/homepageform/popup/popup.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AnimationComponent } from './animation/animation.component';
 // import { SquigglesComponent } from './squiggles/squiggles.component';
 // import { PopupComponent } from './components/homepageform/popup/popup.component';
 registerLocaleData(localeEn, 'en-EN');
@@ -122,6 +123,7 @@ export function tokenGetter() {
         DetailsComponent,
         PopupComponent,
         InfoDemo,
+        AnimationComponent,
         // TableComponent
 
     ],
