@@ -1,5 +1,5 @@
 
-    <div class="col-12 md:col-6" style="padding: 15px">
+    <div class="col-12 md:col-6" style="padding: 10px">
         <div class="card p-fluid">
             <br>
             <div class="p-fluid p-formgrid grid">
@@ -73,7 +73,7 @@
                         <label for="float-label" class="text-color-gs">Combo: </label>
 
                     </p-floatLabel>
-                    <div class="col-md-6 col-sm-12 col-12" style="padding:0.75rem">
+                    <div class="col-md-6 col-sm-12 col-12" >
                         <div class="form-group" style="margin-right: 10px;">
                           <label class="text-color-gs">List of samples:</label>
                           <div class="button-checkbox">
@@ -88,7 +88,7 @@
                               </div>
                       
                               <input type="radio" name="radioXN" id="radioXN-1" autocomplete="off" value="13" [(ngModel)]="selectedOption" (change)="onSelectionChange($event)">
-                              <div class="btn-group" style="margin-right: 10px;">
+                              <div class="btn-group" style="margin-right: 10px; ">
                                 <label for="radioXN-1" class="btn btn-success btn-sm">
                                   <span class="fa fa-check-square fa-lg"></span>
                                   <span class="fa fa-square fa-lg"></span>
@@ -156,7 +156,7 @@
 
     <div class="grid">
      
-        <div class="col-12 md:col-6" style="padding: 15px;  white-space: nowrap;">
+        <div class="col-12 md:col-6" style="padding: 10px;  white-space: nowrap;">
             <div class="card p-fluid" style="padding: 15px">
 
                 <p-table #dt [value]="dataList"
@@ -164,13 +164,7 @@
                 [rows]="9"
                  
                     [tableStyle]="{'min-width': '50rem'}">
-                    <p-scroller 
-                    [items]="dataList" 
-                    [itemSize]="15" 
-                    scrollHeight="200px" 
-                    orientation="horizontal" 
-                    styleClass="border-1 surface-border" 
-                    [style]="{'width': '200px', 'height': '200px'}">
+                    
                     <ng-template pTemplate="header" >
                         <tr>
 
@@ -243,7 +237,7 @@
                         </tr>
              
                     </ng-template>
-                </p-scroller>
+
 
                     <ng-template pTemplate="body" let-data>
                         <tr>
