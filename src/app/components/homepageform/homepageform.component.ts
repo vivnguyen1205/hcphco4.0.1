@@ -81,12 +81,14 @@ export class HomepageformComponent implements OnInit {
         }, 3000);
     }
     // reset(formState?: TValue | FormControlState<TValue>, options?: { onlySelf?: boolean; emitEvent?: boolean; }): void
-    
+
     hospitalId: number = -1;
     CSFId: any;
     CSFIdEncrypt: any;
     CSFIdLink: string;
     doctorId: number = -1;
+    // dataValue: number = data.id_sample_status
+    
     rangeDates: Date[] | undefined;
     comboId: number = -1;
     testPackageId: number = -1;
@@ -134,6 +136,7 @@ export class HomepageformComponent implements OnInit {
         form.reset();
 
     }
+    
     // DEFINING VARIABLES AND CONTSTANTS
     private tokenKey: string =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJVc2VybmFtZSI6ImRvY3RvcjIiLCJUeXBlIjoiUGFydG5lciIsIkZ1bGxOYW1lIjoiZG9jdG9yIDIiLCJFbWFpbCI6IjJAZ21haWwuY29tIiwiUGhvbmUiOiIwIiwiSXNBZ3JlZW1lbnQiOiJUcnVlIiwiSXNMb3lhbHR5UHJvZ3JhbSI6IlRydWUiLCJMaXN0SG9zcGl0YWwiOiJbe1wiSWRcIjo0NzczLFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDA3NDhcIixcIk5hbWVcIjpcIkJWIFBTIE1la29uZ1wifSx7XCJJZFwiOjQ5MjUsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDA3MVwiLFwiTmFtZVwiOlwiUEsgQlMgVHLhuqduIFRo4buLIFPGoW4gVHLDoFwifSx7XCJJZFwiOjQ5MzQsXCJUeXBlXCI6XCJwa1wiLFwiQ29kZVwiOlwiR1MwMDM2NFwiLFwiTmFtZVwiOlwiUEsgQlMgVHLGsMahbmcgTmfhu41jIFRo4bqjb1wifSx7XCJJZFwiOjQ5ODMsXCJUeXBlXCI6XCJvdGhlclwiLFwiQ29kZVwiOlwiR1MwMDczNFwiLFwiTmFtZVwiOlwiVklOQ0lCSU9cIn0se1wiSWRcIjo1MTQxLFwiVHlwZVwiOlwicGtcIixcIkNvZGVcIjpcIkdTMDA0MTNcIixcIk5hbWVcIjpcIlBLIFRoYW5oIEjDom5cIn0se1wiSWRcIjo2ODU5LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIxMDlcIixcIk5hbWVcIjpcIlBYTiBZIEtob2EgNDhcIn0se1wiSWRcIjo2OTg3LFwiVHlwZVwiOlwiYnZcIixcIkNvZGVcIjpcIkdTMDIyMzdcIixcIk5hbWVcIjpcIlBLIEJTIMSQb8OgbiBUaOG7iyBLaW0gRHVuZ1wifV0iLCJleHAiOjE3MjA0MDQyMjQsImlzcyI6ImhjcC1nZW5lc29sdXRpb24iLCJhdWQiOiJoY3AtZ2VuZXNvbHV0aW9uIn0.FbK_FtaGhfuux8_84cIgs0v2O89wfOnXvWEDKmHTGMg';
@@ -185,6 +188,14 @@ export class HomepageformComponent implements OnInit {
             console.log(this.ComboList);
         });
     }
+    // getDataValue(apiUrl: any) {
+    //     this.apiService.getData(apiUrl).subscribe((data: any) => {
+    //         this.DoctorList = data.Data;
+    //         this.hospitalId = hospitalId?.value;
+
+    //         console.log(this.DoctorList);
+    //     });
+    // }
 
     onChangeHospital(hospitalId: any) {
         // gets the doctor list changes on hospital change
@@ -276,7 +287,7 @@ export class HomepageformComponent implements OnInit {
         console.log(this.completeDateFrom, this.completeDateTo);
         const testPackageIds = this.packageArr.length > 0 ?  this.packageArr.join(',') : '';
         const apiUrl = this.Base_URL + `/api/HCP/GetLabByUser?id_hospital=${this.hospitalId}&id_doctor=${this.doctorId}&id_combo=${this.comboId}&id_service_code=${testPackageIds}&StartDate_Collect=${this.recievedDateFrom || ''}&EndDate_Collect=${this.drawDateTo || ''}&StartDate_Receive=${this.recievedDateFrom || ''}&EndDate_Receive=${this.recievedDateTo || ''}&StartDate_Complete_Lab=${this.completeDateFrom || ''}&EndDate_Complete_Lab=${this.completeDateTo || ''}&customer_name=${this.customerName || ''}&lab_code=${this.labCode || ''}&Type=${this.selectedOption}&sortField=&sortOrder=&pageNumber=1&pageSize=20`;
-        
+   
         this.apiService.getData(apiUrl).subscribe((data: any) => {
             this.dataList = data.Data.ListData;
             // console.log(this.dataList);

@@ -106,6 +106,10 @@ html {
     font-size: 14px;
     padding: 10px;
 }
+.sample-status[data-value="80"] {
+    background: #ADDC59;
+    color: #FFFFFF;
+}
 .tab-label{
 padding-left: 10px;
 }
@@ -365,3 +369,74 @@ section {
     border-radius: 12px;
   }
  
+/*Tạo mới*/
+.sample-status[data-value="10"] {
+    background: #FFCF33;
+    color: #FFFFFF;
+}
+
+/*Đang mã hóa*/
+.sample-status[data-value="20"], .sample-status[data-value="30"] {
+    background: #FF8A60;
+    color: #fff;
+}
+
+/*Đang tách chiết*/
+.sample-status[data-value="40"], .sample-status[data-value="50"], .sample-status[data-value="60"], .sample-status[data-value="70"] {
+    background: #60D5FF;
+    color: #fff;
+}
+
+/*Đang Sequencing*/
+.sample-status[data-value="75"], .sample-status[data-value="90"] {
+    background: #9974FF;
+    color: #fff;
+}
+
+/*Thu Máu Lại*/
+.sample-status[data-value="100"] {
+    background: #68EAD7;
+    color: #fff;
+}
+
+/*Hoàn tất / Đã trả KQ*/
+.sample-status[data-value="80"] {
+    background: #ADDC59;
+    color: #FFFFFF;
+}
+
+/*Đã Xóa*/
+.sample-status[data-value="0"] {
+    background: #FF8A60;
+    color: #FFFFFF;
+}
+
+/*Ngưng chạy*/
+.sample-status[data-value="116"] {
+    background: #FF8A60;
+    color: #FFFFFF;
+}
+
+/*Huỷ*/
+.sample-status[data-value="120"] {
+    background: #FF8A60;
+    color: #FFFFFF;
+}
+
+/*Đã có KQ*/
+.combo-status[data-value="1"] {
+    background: #00a65a;
+    color: #fff;
+}
+
+/*Không XN Combo*/
+.combo-status[data-value="0"] {
+    background: #777777;
+    color: #fff;
+}
+
+/*Chưa có KQ*/
+.combo-status[data-value="2"] {
+    background: #FF851B;
+    color: #fff;
+}
