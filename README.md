@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Admin LTE 3.2.0 - Angular 18.0.0</h1>
+<h1 align="center">HCPHCO4.0.1 - Angular 18.0.0</h1>
 
 <p>
   This repository is a form of original AdminLTE project. It is aim to use AdminLTE template with Angular.
@@ -25,7 +25,6 @@
 
 ## Demo
 
-Online demo: https://www.erdkse.com/projects/preview/adminlte-angular
 
 To login website you can `create` a user. All authenication related features are `working` and `live`!
 
