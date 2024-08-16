@@ -327,9 +327,7 @@ export class HomepageformComponent implements OnInit {
           let summary_and_detail;
           this.onSearch();
       });
-        
-
-  
+      console.log(this.CSFId);
         // const CSFIdLink =
         //     'https://hcp-stg.genesolutions.vn/details?id=' + CSFId;
         // window.open(CSFIdLink, '_blank').focus();
