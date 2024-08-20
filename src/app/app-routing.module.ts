@@ -15,7 +15,6 @@ import {ForgotPasswordComponent} from '@modules/forgot-password/forgot-password.
 import {RecoverPasswordComponent} from '@modules/recover-password/recover-password.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
 import { HomepageComponent } from '@pages/homepage/homepage.component';
-// import { AnimationComponent } from './animation/animation.component';
 import { NotificationComponent } from '@pages/notification/notification.component';
 const routes: Routes = [
     {
